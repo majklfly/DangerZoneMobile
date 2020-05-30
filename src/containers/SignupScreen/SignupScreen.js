@@ -106,7 +106,6 @@ SignupScreen.navigationOptions = () => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     error: state.AuthReducer.error
   };

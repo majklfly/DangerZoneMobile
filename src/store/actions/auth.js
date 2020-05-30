@@ -9,10 +9,11 @@ export const authStart = userData => {
   };
 };
 
-export const authSuccess = token => {
+export const authSuccess = (token, userId) => {
   return {
     type: types.AUTH_SUCCESS,
-    token: token
+    token: token,
+    userId: userId
   };
 };
 
@@ -23,8 +24,20 @@ export const authFail = error => {
   };
 };
 
+export const autoSignin = (token, userId) => {
+  const userIdInteger = parseInt(userId);
+  if (token && userId) {
+    return dispatch => {
+      dispatch(authStart());
+      dispatch(authSuccess(token, userIdInteger));
+      navigate("mainFlow");
+    };
+  }
+};
+
 export const Signup = (username, email, password1, password2) => {
   return dispatch => {
+    dispatch(authStart());
     server
       .post("/rest-auth/registration", {
         username,
@@ -35,9 +48,10 @@ export const Signup = (username, email, password1, password2) => {
       .then(res => {
         if (res.status === 201) {
           const token = res.data.key;
-          console.log("token", token);
+          const userId = res.data.user.pk;
           AsyncStorage.setItem("token", token);
-          dispatch(authSuccess(token));
+          AsyncStorage.setItem("userId", userId);
+          dispatch(authSuccess(token, userId));
           navigate("mainFlow");
         } else {
           console.log("error, mate");
@@ -51,6 +65,7 @@ export const Signup = (username, email, password1, password2) => {
 
 export const Signin = (username, password) => {
   return dispatch => {
+    dispatch(authStart());
     server
       .post("/rest-auth/login/", {
         username,
@@ -58,13 +73,18 @@ export const Signin = (username, password) => {
       })
       .then(res => {
         const token = res.data.key;
-        console.log("token", token);
-        AsyncStorage.setItem("token", token);
-        dispatch(authSuccess(token));
+        const userId = res.data.user.pk;
+        const userIdStr = JSON.stringify(userId);
+        const data = [
+          ["token", token],
+          ["userId", userIdStr]
+        ];
+        AsyncStorage.multiSet(data);
+        dispatch(authSuccess(token, userId));
         navigate("mainFlow");
       })
       .catch(error => {
-        dispatch(authFail(error));
+        dispatch(authFail(error.response.data));
       });
   };
 };
@@ -74,19 +94,26 @@ export const FacebookLogin = token => {
   const access_token = token;
 
   return dispatch => {
-    console.log("runned");
-    console.log("token", token);
     server
       .post("/social/", {
         provider,
         access_token
       })
       .then(res => {
-        dispatch(authSuccess(res.data.token));
+        const token = res.data.token;
+        const userId = res.data.id;
+        dispatch(authSuccess(token, userId));
         navigate("mainFlow");
       })
       .catch(error => {
         console.log(error.response.data);
       });
+  };
+};
+
+export const logout = () => {
+  console.log("Async cleared");
+  return dispatch => {
+    AsyncStorage.clear().then(() => navigate("Signin"));
   };
 };

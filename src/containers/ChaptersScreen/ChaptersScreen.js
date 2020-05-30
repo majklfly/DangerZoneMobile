@@ -1,29 +1,61 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  AsyncStorage
+} from "react-native";
 
+import ChaptersList from "../../components/ChaptersList/ChaptersList";
+import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
+
+import { getChapters } from "../../store/actions/chapters";
+import { getUserData } from "../../store/actions/userData";
 import { connect } from "react-redux";
 
 const ChaptersScreen = props => {
-  return (
-    <View>
-      <Text style={styles.title} data-test="chapterTitle">
-        ChaptersScreen
-      </Text>
-      <Text>{props.token}</Text>
-    </View>
-  );
-};
+  useEffect(() => {
+    props.getChapters(props.token);
+    props.getUserData(props.token, props.userId);
+  }, []);
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 48
+  if (typeof props.chapters.chapters === "object") {
+    AsyncStorage.setItem(
+      "chaptersLength",
+      JSON.stringify(props.chapters.chapters.length)
+    );
+    return (
+      <View style={styles.container}>
+        <ChaptersList
+          chapters={props.chapters}
+          completedChapters={props.userData}
+        />
+      </View>
+    );
+  } else {
+    return <ActivityIndicator size="large" color="#0000ff" />;
   }
-});
+};
 
 const mapStateToProps = state => {
   return {
-    token: state.AuthReducer.token
+    token: state.AuthReducer.token,
+    userId: state.AuthReducer.userId,
+    chapters: state.ChapterReducer,
+    userData: state.userDataReducer
   };
 };
 
-export default connect(mapStateToProps)(ChaptersScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    getChapters: token => {
+      dispatch(getChapters(token));
+    },
+    getUserData: (token, userId) => {
+      dispatch(getUserData(token, userId));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChaptersScreen);
