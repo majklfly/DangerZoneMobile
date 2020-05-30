@@ -1,21 +1,23 @@
 import React from "react";
-import { View, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, Dimensions } from "react-native";
 
-import { ArticleSliderStyles as styles } from "./ArticleSliderStyles";
-import ArticleSlide from "../ArticleSlide/ArticleSlide";
+import { QuizSliderStyles as styles } from "./QuizSliderStyles";
+import QuizSlide from "../QuizSlide/QuizSlide";
 
-const ArticleSlider = props => {
+const { width } = Dimensions.get("window");
+
+const QuizSlider = props => {
   if (props.data) {
     return (
       <View style={styles.container}>
         <FlatList
-          data={props.data.articles}
+          data={props.data.questions}
           keyExtractor={(item, index) => "key" + index}
           renderItem={item => {
-            return <ArticleSlide item={item} />;
+            return <QuizSlide item={item} />;
           }}
           horizontal
-          pagingEnable
+          paggingEnable
           decelerationRate="fast"
           snapToInterval={width}
           showHorizontalScrollIndicator={false}
@@ -26,4 +28,4 @@ const ArticleSlider = props => {
   return null;
 };
 
-export default ArticleSlider;
+export default QuizSlider;

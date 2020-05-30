@@ -7,7 +7,6 @@ import ItemMini from "./ItemMini";
 import UserBoard from "../../containers/UserBoard/UserBoard";
 
 export const SwipeUpDownCustom = () => {
-  console.log("swip");
   return (
     <SwipeUpDown
       itemMini={<ItemMini />}

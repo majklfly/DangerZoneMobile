@@ -29,6 +29,7 @@
     "react-native-elements": "^2.0.0",
     "react-native-fbsdk": "github:facebook/react-native-fbsdk",
     "react-native-gesture-handler": "~1.6.0",
+    "react-native-popup-navigation": "^0.2.0",
     "react-native-progress": "^3.6.0",
     "react-native-reanimated": "~1.7.0",
     "react-native-safe-area-context": "0.7.3",
@@ -45,7 +46,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rn-sliding-up-panel": "^2.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

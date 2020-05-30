@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { View, Text, FlatList, Button } from "react-native";
 import { ChaptersListStyles as styles } from "./ChaptersListStyles";
 
-import ChapterButton from "../ChapterButton/ChapterButton";
+import ChapterButtonPositive from "../ChapterButtonPositive/ChapterButtonPositive";
+import ChapterButtonNegative from "../ChapterButtonNegative/ChapterButtonNegative";
 
 const ChaptersList = props => {
   const chapters = [];
@@ -34,7 +35,7 @@ const ChaptersList = props => {
         renderItem={({ item }) => {
           if (completedChapters.includes(item[1])) {
             return (
-              <ChapterButton
+              <ChapterButtonNegative
                 title={item[1]}
                 buttonStyle={styles.inactiveButton}
                 disabled={true}
@@ -42,7 +43,7 @@ const ChaptersList = props => {
             );
           } else {
             return (
-              <ChapterButton
+              <ChapterButtonPositive
                 chapterIndex={item[0]}
                 title={item[1]}
                 buttonStyle={styles.activeButton}

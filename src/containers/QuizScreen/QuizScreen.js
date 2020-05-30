@@ -1,18 +1,45 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Button, AsyncStorage } from "react-native";
 
-const QuizScreen = () => {
+import { navigate } from "../../navigationRef";
+
+import QuizSlider from "../../components/QuizSlider/QuizSlider";
+
+import { connect } from "react-redux";
+import { getQuizData } from "../../store/actions/quiz";
+
+const QuizScreen = props => {
+  const retrieveData = async () => {
+    const chapterId = await AsyncStorage.getItem("currentChapterIndex");
+    const chapterIdInt = parseInt(chapterId);
+    const token = await AsyncStorage.getItem("token");
+    props.getQuizData(token, chapterIdInt);
+  };
+
+  useEffect(() => {
+    retrieveData();
+  }, []);
+
   return (
     <View>
-      <Text style={styles.title}>QuizScreen</Text>
+      <QuizSlider data={props.quiz} />
+      <Button title="Chapterss" onPress={() => navigate("Chapters")}></Button>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 48
-  }
-});
+const mapStateToProps = state => {
+  return {
+    quiz: state.QuizReducer.quiz
+  };
+};
 
-export default QuizScreen;
+const mapDispatchToProps = dispatch => {
+  return {
+    getQuizData: (token, chapterId) => {
+      dispatch(getQuizData(token, chapterId));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizScreen);

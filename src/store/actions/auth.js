@@ -30,7 +30,7 @@ export const autoSignin = (token, userId) => {
     return dispatch => {
       dispatch(authStart());
       dispatch(authSuccess(token, userIdInteger));
-      navigate("mainFlow");
+      navigate("Chapters");
     };
   }
 };
@@ -52,7 +52,7 @@ export const Signup = (username, email, password1, password2) => {
           AsyncStorage.setItem("token", token);
           AsyncStorage.setItem("userId", userId);
           dispatch(authSuccess(token, userId));
-          navigate("mainFlow");
+          navigate("Chapters");
         } else {
           console.log("error, mate");
         }
@@ -81,7 +81,7 @@ export const Signin = (username, password) => {
         ];
         AsyncStorage.multiSet(data);
         dispatch(authSuccess(token, userId));
-        navigate("mainFlow");
+        navigate("Chapters");
       })
       .catch(error => {
         dispatch(authFail(error.response.data));
@@ -103,7 +103,7 @@ export const FacebookLogin = token => {
         const token = res.data.token;
         const userId = res.data.id;
         dispatch(authSuccess(token, userId));
-        navigate("mainFlow");
+        navigate("Chapters");
       })
       .catch(error => {
         console.log(error.response.data);

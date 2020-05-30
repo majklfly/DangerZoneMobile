@@ -42,10 +42,8 @@ const switchNavigator = createSwitchNavigator({
       }
     }
   ),
-  mainFlow: createBottomTabNavigator({
-    Chapters: ChaptersScreen,
-    Profile: ProfileScreen
-  }),
+  Chapters: ChaptersScreen,
+  Profile: ProfileScreen,
   Article: ArticleScreen,
   Quiz: QuizScreen
 });

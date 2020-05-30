@@ -1,9 +1,13 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const ChaptersScreenStyles = StyleSheet.create({
   container: {
-    marginHorizontal: 40,
-    marginTop: 60
+    width: width,
+    paddingHorizontal: 20,
+    paddingTop: 60,
+    backgroundColor: "#ff7110"
   }
 });

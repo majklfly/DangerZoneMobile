@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const ArticlesScreenStyles = StyleSheet.create({
-  title: {
-    fontSize: 48
-  },
   screen: {
-    backgroundColor: "#ff7110"
+    backgroundColor: "#ff7110",
+    height: height
   }
 });

@@ -20,8 +20,6 @@ import { logout } from "../../store/actions/auth";
 const UserBoard = props => {
   const [percentage, setPercentage] = useState(0);
 
-  const keys = AsyncStorage.getAllKeys().then(data => console.log(data));
-
   const handlePercentage = async () => {
     const data = await AsyncStorage.getItem("chaptersLength");
     const total = parseInt(data) * 100;

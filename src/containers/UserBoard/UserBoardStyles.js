@@ -5,7 +5,8 @@ const { width, height } = Dimensions.get("window");
 
 export const UserBoardStyles = StyleSheet.create({
   mainContainer: {
-    height: height,
+    height: height + 50,
+    backgroundColor: "#ff7110",
     justifyContent: "space-between",
     paddingBottom: 50
   },

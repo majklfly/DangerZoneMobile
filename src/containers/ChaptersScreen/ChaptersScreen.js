@@ -10,6 +10,8 @@ import {
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
 import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
 
+import { SwipeUpDownCustom } from "../../components/SwipeUpDown/SwipeUpDown";
+
 import { getChapters } from "../../store/actions/chapters";
 import { getUserData } from "../../store/actions/userData";
 import { connect } from "react-redux";
@@ -31,6 +33,7 @@ const ChaptersScreen = props => {
           chapters={props.chapters}
           completedChapters={props.userData}
         />
+        <SwipeUpDownCustom />
       </View>
     );
   } else {

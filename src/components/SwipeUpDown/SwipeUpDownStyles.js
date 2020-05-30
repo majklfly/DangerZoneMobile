@@ -5,10 +5,13 @@ const { width, height } = Dimensions.get("window");
 
 export const SwipeUpDownStyles = StyleSheet.create({
   container: {
-    backgroundColor: "#ff7110"
+    backgroundColor: "#ff7110",
+    position: "absolute",
+    bottom: -20
   },
   mini: {
-    width: width - 10,
+    height: 100,
+    backgroundColor: "green",
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "center",
