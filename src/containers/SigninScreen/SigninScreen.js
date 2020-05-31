@@ -35,6 +35,7 @@ const SigninScreen = props => {
   };
 
   const handleError = () => {
+    console.log("error", props.error);
     if (props.error !== null) {
       if ("password" in props.error) {
         dropdown.alertWithType(

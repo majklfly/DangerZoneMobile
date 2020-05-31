@@ -34,10 +34,11 @@ const ArticleScreen = props => {
   useEffect(() => {
     retrieveData();
   }, []);
+
   return (
-    <View style={styles.screen}>
-      <ArticleSlider data={props.chapter} />
-      <SwipeUpDownCustom />
+    <View style={styles.screen} data-test="articleContainer">
+      <ArticleSlider data={props.chapter} data-test="articleSlider" />
+      <SwipeUpDownCustom data-test="swipeContainer" />
     </View>
   );
 };

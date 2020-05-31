@@ -1,8 +1,10 @@
 import React from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Dimensions } from "react-native";
 
 import { ArticleSliderStyles as styles } from "./ArticleSliderStyles";
 import ArticleSlide from "../ArticleSlide/ArticleSlide";
+
+const { width, height } = Dimensions.get("window");
 
 const ArticleSlider = props => {
   if (props.data) {

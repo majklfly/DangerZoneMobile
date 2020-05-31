@@ -1,14 +1,25 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, Button, AsyncStorage } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  AsyncStorage,
+  ActivityIndicator
+} from "react-native";
 
 import { navigate } from "../../navigationRef";
 
 import QuizSlider from "../../components/QuizSlider/QuizSlider";
+import { QuizScreenStyles as styles } from "./QuizScreenStyles";
+import { SwipeUpDownCustom } from "../../components/SwipeUpDown/SwipeUpDown";
 
 import { connect } from "react-redux";
 import { getQuizData } from "../../store/actions/quiz";
 
 const QuizScreen = props => {
+  console.log(props);
+
   const retrieveData = async () => {
     const chapterId = await AsyncStorage.getItem("currentChapterIndex");
     const chapterIdInt = parseInt(chapterId);
@@ -19,12 +30,16 @@ const QuizScreen = props => {
   useEffect(() => {
     retrieveData();
   }, []);
-
+  if (props.quiz) {
+    return (
+      <View data-test="quizContainer">
+        <QuizSlider data={props.quiz} />
+        <SwipeUpDownCustom />
+      </View>
+    );
+  }
   return (
-    <View>
-      <QuizSlider data={props.quiz} />
-      <Button title="Chapterss" onPress={() => navigate("Chapters")}></Button>
-    </View>
+    <ActivityIndicator size="large" color="0000ff" style={styles.indicator} />
   );
 };
 

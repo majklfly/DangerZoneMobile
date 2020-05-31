@@ -28,17 +28,24 @@ const ChaptersScreen = props => {
       JSON.stringify(props.chapters.chapters.length)
     );
     return (
-      <View style={styles.container}>
+      <View style={styles.container} data-test="chapterContainer">
         <ChaptersList
           chapters={props.chapters}
           completedChapters={props.userData}
+          data-test="chapterList"
         />
-        <SwipeUpDownCustom />
+        <SwipeUpDownCustom data-test="swipeContainer" />
       </View>
     );
-  } else {
-    return <ActivityIndicator size="large" color="#0000ff" />;
   }
+  return (
+    <ActivityIndicator
+      size="large"
+      color="#0000ff"
+      style={styles.indicator}
+      data-test="chapterIndicator"
+    />
+  );
 };
 
 const mapStateToProps = state => {

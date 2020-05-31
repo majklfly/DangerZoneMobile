@@ -9,20 +9,21 @@ const ChaptersList = props => {
   const chapters = [];
   const completedChapters = [];
 
+  console.log(props.completedChapters);
+
   const sortChapters = () => {
-    if (
-      props.chapters.chapters !== undefined &&
-      props.completedChapters.userdata !== undefined
-    ) {
+    if (props.chapters.chapters !== undefined) {
       props.chapters.chapters.map(item => {
         return chapters.push([item.id, item.title]);
       });
-      const data = props.completedChapters.userdata.chapterdata;
-      data.map(item => {
-        return item.completed === true
-          ? completedChapters.push(item.chapterTitle)
-          : null;
-      });
+      if (props.completedChapters.userdata !== undefined) {
+        const data = props.completedChapters.userdata.chapterdata;
+        data.map(item => {
+          return item.completed === true
+            ? completedChapters.push(item.chapterTitle)
+            : null;
+        });
+      }
     }
   };
   sortChapters();

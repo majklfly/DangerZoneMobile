@@ -8,14 +8,15 @@ export const QuizSlideStyles = StyleSheet.create({
     flex: 1,
     width: width,
     height: height,
-    padding: 20
+    padding: 20,
+    justifyContent: "center"
   },
   question: {
     fontSize: 30,
-    alignSelf: "center"
+    padding: 20
   },
   button: {
     margin: 20,
-    backgroundColor: "green"
+    backgroundColor: "#364d79"
   }
 });

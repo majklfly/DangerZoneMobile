@@ -6,6 +6,9 @@ export const FacebookButtonStyles = StyleSheet.create({
     borderRadius: 10,
     marginHorizontal: 60,
     backgroundColor: "#4267B2",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: 10,
+    width: 250,
+    alignSelf: "center"
   }
 });

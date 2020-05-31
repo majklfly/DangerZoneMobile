@@ -1,14 +1,18 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
 import SigninScreen from "./SigninScreen";
 import { findByTestAttr, testStore } from "../../utils";
+
+configure({ adapter: new Adapter() });
 
 const setUp = () => {
   const store = testStore();
   const wrapper = shallow(<SigninScreen store={store} />)
     .dive()
     .dive();
-  return wrappers;
+  return wrapper;
 };
 
 describe("SigninScreen", () => {

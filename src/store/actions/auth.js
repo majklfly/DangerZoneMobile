@@ -25,14 +25,16 @@ export const authFail = error => {
 };
 
 export const autoSignin = (token, userId) => {
-  const userIdInteger = parseInt(userId);
-  if (token && userId) {
-    return dispatch => {
-      dispatch(authStart());
-      dispatch(authSuccess(token, userIdInteger));
-      navigate("Chapters");
-    };
-  }
+  return dispatch => {
+    const userIdInteger = parseInt(userId);
+    if (token && userId) {
+      return dispatch => {
+        dispatch(authStart());
+        dispatch(authSuccess(token, userIdInteger));
+        navigate("Chapters");
+      };
+    }
+  };
 };
 
 export const Signup = (username, email, password1, password2) => {
@@ -46,16 +48,13 @@ export const Signup = (username, email, password1, password2) => {
         password2
       })
       .then(res => {
-        if (res.status === 201) {
-          const token = res.data.key;
-          const userId = res.data.user.pk;
-          AsyncStorage.setItem("token", token);
-          AsyncStorage.setItem("userId", userId);
-          dispatch(authSuccess(token, userId));
-          navigate("Chapters");
-        } else {
-          console.log("error, mate");
-        }
+        console.log("res", res);
+        const token = res.data.key;
+        const userId = res.data.user.pk;
+        AsyncStorage.setItem("token", token);
+        AsyncStorage.setItem("userId", userId);
+        dispatch(authSuccess(token, userId));
+        navigate("Chapters");
       })
       .catch(error => {
         dispatch(authFail(error));

@@ -21,6 +21,8 @@ export const SigninScreenStyles = StyleSheet.create({
   signinButton: {
     marginHorizontal: 40,
     backgroundColor: "#FF7110",
-    borderRadius: 10
+    borderRadius: 10,
+    width: 250,
+    alignSelf: "center"
   }
 });
