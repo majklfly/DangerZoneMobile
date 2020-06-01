@@ -4,9 +4,13 @@ import { ArticleSlideStyles as styles } from "./ArticleSlideStyles";
 
 const ArticleSlide = props => {
   return (
-    <View style={styles.cardView}>
-      <Text style={styles.itemTitle}>{props.item.item.name}</Text>
-      <Text style={styles.itemContent}>{props.item.item.content}</Text>
+    <View style={styles.cardView} data-test="slideContainer">
+      <Text style={styles.itemTitle} data-test="slideTitle">
+        {props.item.item.name}
+      </Text>
+      <Text style={styles.itemContent} data-test="slideContent">
+        {props.item.item.content}
+      </Text>
       <Text style={styles.itemContent}>{props.item.item.line1}</Text>
       <Text style={styles.itemContent}>{props.item.item.line2}</Text>
       <Text style={styles.itemContent}>{props.item.item.line3}</Text>

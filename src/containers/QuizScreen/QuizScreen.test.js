@@ -13,7 +13,6 @@ const setUp = (initialState = {}) => {
   const wrapper = shallow(<QuizScreen store={store} />)
     .dive()
     .dive();
-  console.log(wrapper.debug());
   return wrapper;
 };
 
@@ -21,15 +20,25 @@ describe("QuizScreen", () => {
   let wrapper;
   beforeEach(() => {
     const initialState = {
-      reducer: {
+      QuizReducer: {
         quiz: [{ value: 1 }]
       }
     };
-    wrapper = setUp();
+    wrapper = setUp(initialState);
   });
 
   it("should render the container", () => {
     const container = findByTestAttr(wrapper, "quizContainer");
     expect(container.length).toBe(1);
+  });
+
+  it("should render the slider", () => {
+    const slider = findByTestAttr(wrapper, "quizSlider");
+    expect(slider.length).toBe(1);
+  });
+
+  it("should render the swipe", () => {
+    const swipe = findByTestAttr(wrapper, "quizSwipe");
+    expect(swipe.length).toBe(1);
   });
 });

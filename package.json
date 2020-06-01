@@ -10,15 +10,18 @@
     "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "testEnvironment": "jsdom"
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.6",
     "antd-mobile": "^2.3.1",
+    "asset": "^0.4.13",
     "axios": "^0.19.2",
     "babel-plugin-import": "^1.13.0",
-    "expo": "~37.0.3",
+    "expo": "^37.0.3",
     "expo-facebook": "~8.1.0",
     "react": "~16.9.0",
     "react-devtools": "^4.6.0",
@@ -56,7 +59,8 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.0.0",
     "jest-expo": "^37.0.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-native-mock-render": "^0.1.9"
   },
   "private": true
 }

@@ -51,12 +51,13 @@ const SignupScreen = props => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} data-test="signupContainer">
       <Image
         style={styles.stretch}
         source={require("../../../assets/icon.png")}
+        data-test="signupImage"
       />
-      <View style={styles.formContainer}>
+      <View style={styles.formContainer} data-test="formContainer">
         <Input
           label="Username"
           value={username}
@@ -91,6 +92,7 @@ const SignupScreen = props => {
           buttonStyle={styles.signupButton}
           onPress={() => handleSubmit()}
           title="Sign Up"
+          data-test="signupButton"
         />
         <Text style={styles.link}> Sign In </Text>
       </View>

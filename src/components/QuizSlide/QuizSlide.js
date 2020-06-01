@@ -22,14 +22,16 @@ const QuizSlide = React.forwardRef((props, ref) => {
   };
 
   return (
-    <View style={styles.cardView}>
+    <View style={styles.cardView} data-test="quizSlideContainer">
       <Text style={styles.question}>{props.item.item.label}</Text>
       <FlatList
+        data-test="quizSlideFlatList"
         data={props.item.item.answers}
         keyExtractor={(item, index) => "key" + index}
         renderItem={item => {
           return (
             <Button
+              data-test="answerButton"
               title={item.item.text}
               buttonStyle={styles.button}
               onPress={() => handleAnswer(item.item.is_correct)}

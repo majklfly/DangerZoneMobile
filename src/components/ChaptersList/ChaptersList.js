@@ -9,8 +9,6 @@ const ChaptersList = props => {
   const chapters = [];
   const completedChapters = [];
 
-  console.log(props.completedChapters);
-
   const sortChapters = () => {
     if (props.chapters.chapters !== undefined) {
       props.chapters.chapters.map(item => {
@@ -29,14 +27,16 @@ const ChaptersList = props => {
   sortChapters();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} data-test="chapterListContainer">
       <FlatList
+        data-test="chaptersFlatlist"
         data={chapters}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
           if (completedChapters.includes(item[1])) {
             return (
               <ChapterButtonNegative
+                data-test="negativeButton"
                 title={item[1]}
                 buttonStyle={styles.inactiveButton}
                 disabled={true}
@@ -45,6 +45,7 @@ const ChaptersList = props => {
           } else {
             return (
               <ChapterButtonPositive
+                data-test="positiveButton"
                 chapterIndex={item[0]}
                 title={item[1]}
                 buttonStyle={styles.activeButton}

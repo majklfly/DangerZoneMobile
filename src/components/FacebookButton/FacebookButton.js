@@ -33,6 +33,7 @@ const FacebookButton = props => {
 
   return (
     <Button
+      data-test="facebookButton"
       buttonStyle={styles.button}
       title="  Facebook Login"
       icon={<Icon name="facebook-square" size={25} color="white" />}

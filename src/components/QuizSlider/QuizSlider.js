@@ -11,8 +11,9 @@ const QuizSlider = props => {
 
   if (props.data) {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} data-test="quizSliderContainer">
         <FlatList
+          data-test="quizSliderFlatlist"
           data={props.data.questions}
           keyExtractor={(item, index) => "key" + index}
           renderItem={item => {

@@ -6,7 +6,7 @@ import { TermsScreenStyles as styles } from "./TermsScreenStyles";
 const TermsScreen = () => {
   return (
     <ScrollView>
-      <View style={styles.TermsContainer}>
+      <View style={styles.TermsContainer} data-test="termsContainer">
         <Text style={styles.TermsText} h3>
           PRIVACY NOTICE
         </Text>

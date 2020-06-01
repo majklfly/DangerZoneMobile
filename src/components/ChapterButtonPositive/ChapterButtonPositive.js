@@ -15,7 +15,10 @@ const ChapterButtonPositive = props => {
   };
 
   return (
-    <TouchableOpacity style={styles.buttonLayout}>
+    <TouchableOpacity
+      style={styles.buttonLayout}
+      data-test="chapterButtonPositive"
+    >
       <View style={styles.indicator}></View>
       <Button
         title={props.title}

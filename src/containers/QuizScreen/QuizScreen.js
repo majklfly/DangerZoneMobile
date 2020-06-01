@@ -18,8 +18,6 @@ import { connect } from "react-redux";
 import { getQuizData } from "../../store/actions/quiz";
 
 const QuizScreen = props => {
-  console.log(props);
-
   const retrieveData = async () => {
     const chapterId = await AsyncStorage.getItem("currentChapterIndex");
     const chapterIdInt = parseInt(chapterId);
@@ -33,8 +31,8 @@ const QuizScreen = props => {
   if (props.quiz) {
     return (
       <View data-test="quizContainer">
-        <QuizSlider data={props.quiz} />
-        <SwipeUpDownCustom />
+        <QuizSlider data={props.quiz} data-test="quizSlider" />
+        <SwipeUpDownCustom data-test="quizSwipe" />
       </View>
     );
   }

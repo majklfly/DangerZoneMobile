@@ -5,7 +5,7 @@ import { ChapterButtonNegativeStyles as styles } from "./ChapterButtonNegativeSt
 
 const ChapterButtonNegative = props => {
   return (
-    <View style={styles.buttonLayout}>
+    <View style={styles.buttonLayout} data-test="buttonContainer">
       <View style={styles.indicator}></View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{props.title}</Text>

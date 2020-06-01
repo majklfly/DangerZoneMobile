@@ -33,8 +33,8 @@ const UserBoard = props => {
   }, []);
 
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.title}>
+    <View style={styles.mainContainer} data-test="mainContainer">
+      <Text style={styles.title} data-test="userBoardText">
         What's up, {props.userData.userdata.firstName}
       </Text>
       <AnimatedCircularProgress
@@ -45,10 +45,11 @@ const UserBoard = props => {
         onAnimationComplete={() => {}}
         backgroundColor="white"
         style={styles.progressBar}
+        data-test="progressBar"
       >
         {fill => <Text style={styles.points}>{percentage}%</Text>}
       </AnimatedCircularProgress>
-      <View style={styles.buttonsContainer}>
+      <View style={styles.buttonsContainer} data-test="buttonContainer">
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigate("Chapters")}

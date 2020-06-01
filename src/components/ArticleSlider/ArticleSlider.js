@@ -9,7 +9,7 @@ const { width, height } = Dimensions.get("window");
 const ArticleSlider = props => {
   if (props.data) {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} data-test="articleSliderContainer">
         <FlatList
           data={props.data.articles}
           keyExtractor={(item, index) => "key" + index}
@@ -21,6 +21,7 @@ const ArticleSlider = props => {
           decelerationRate="fast"
           snapToInterval={width}
           showHorizontalScrollIndicator={false}
+          data-test="articleSliderFlatlist"
         />
       </View>
     );
