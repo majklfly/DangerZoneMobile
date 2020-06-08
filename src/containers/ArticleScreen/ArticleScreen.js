@@ -5,7 +5,7 @@ import { navigate } from "../../navigationRef";
 
 import { ArticlesScreenStyles as styles } from "./ArticlesScreenStyles";
 import ArticleSlider from "../../components/ArticleSlider/ArticleSlider";
-import { SwipeUpDownCustom } from "../../components/SwipeUpDown/SwipeUpDown";
+import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
 
 import { getChapter } from "../../store/actions/chapters";
 import { connect } from "react-redux";
@@ -38,7 +38,7 @@ const ArticleScreen = props => {
   return (
     <View style={styles.screen} data-test="articleContainer">
       <ArticleSlider data={props.chapter} data-test="articleSlider" />
-      <SwipeUpDownCustom data-test="swipeContainer" />
+      <UserBoardContainer data-test="swipeContainer" />
     </View>
   );
 };

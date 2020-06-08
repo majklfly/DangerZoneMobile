@@ -9,7 +9,7 @@ import {
 
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { Button } from "react-native-elements";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Feather as Icon } from "@expo/vector-icons";
 
 import { navigate } from "../../navigationRef";
 import { UserBoardStyles as styles } from "./UserBoardStyles";
@@ -34,9 +34,13 @@ const UserBoard = props => {
 
   return (
     <View style={styles.mainContainer} data-test="mainContainer">
-      <Text style={styles.title} data-test="userBoardText">
-        What's up, {props.userData.userdata.firstName}
-      </Text>
+      {props.value && <Icon style={styles.icon} name="chevron-up" size={32} />}
+      {!props.value && <Icon style={styles.icon} name="chevron-up" size={32} />}
+      {props.userData.userdata ? (
+        <Text style={styles.title} data-test="userBoardText">
+          What's up, {props.userData.userdata.firstName}
+        </Text>
+      ) : null}
       <AnimatedCircularProgress
         size={180}
         width={15}
@@ -64,7 +68,7 @@ const UserBoard = props => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigate("Profile")}
+          onPress={() => navigate("UserBoardContainer")}
         >
           <AntDesign name="user" size={24} color="white" />
         </TouchableOpacity>

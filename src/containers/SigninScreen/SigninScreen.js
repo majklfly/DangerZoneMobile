@@ -23,6 +23,7 @@ const SigninScreen = props => {
   const selfLogin = async () => {
     const keys = await AsyncStorage.getAllKeys();
     const result = await AsyncStorage.multiGet(keys);
+
     const loginData = [];
     result.map(item => {
       if (item[0] === "token") {

@@ -8,7 +8,8 @@ export const UserBoardStyles = StyleSheet.create({
     height: height + 50,
     backgroundColor: "#ff7110",
     justifyContent: "space-between",
-    paddingBottom: 50
+    paddingBottom: 50,
+    paddingTop: 40
   },
   button: {
     width: 80,
@@ -36,5 +37,10 @@ export const UserBoardStyles = StyleSheet.create({
   },
   points: {
     fontSize: 40
+  },
+  icon: {
+    color: "white",
+    alignSelf: "center",
+    marginTop: -30
   }
 });

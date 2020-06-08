@@ -12,7 +12,7 @@ import { navigate } from "../../navigationRef";
 
 import QuizSlider from "../../components/QuizSlider/QuizSlider";
 import { QuizScreenStyles as styles } from "./QuizScreenStyles";
-import { SwipeUpDownCustom } from "../../components/SwipeUpDown/SwipeUpDown";
+import { UserBoardContainer } from "../UserBoardContainer/UserBoardContainer";
 
 import { connect } from "react-redux";
 import { getQuizData } from "../../store/actions/quiz";
@@ -32,7 +32,7 @@ const QuizScreen = props => {
     return (
       <View data-test="quizContainer">
         <QuizSlider data={props.quiz} data-test="quizSlider" />
-        <SwipeUpDownCustom data-test="quizSwipe" />
+        <UserBoardContainer data-test="quizSwipe" />
       </View>
     );
   }

@@ -19,7 +19,7 @@ import { store } from "./src/store/createStore";
 
 import SigninScreen from "./src/containers/SigninScreen/SigninScreen";
 import SignupScreen from "./src/containers/SignupScreen/SignupScreen";
-import ProfileScreen from "./src/containers/ProfileScreen/ProfileScreen";
+import UserBoardContainer from "./src/containers/UserBoardContainer/UserBoardContainer";
 import ChaptersScreen from "./src/containers/ChaptersScreen/ChaptersScreen";
 import ArticleScreen from "./src/containers/ArticleScreen/ArticleScreen";
 import TermsScreen from "./src/containers/TermsScreen/TermsScreen";
@@ -43,7 +43,7 @@ const switchNavigator = createSwitchNavigator({
     }
   ),
   Chapters: ChaptersScreen,
-  Profile: ProfileScreen,
+  UserBoardContainer: UserBoardContainer,
   Article: ArticleScreen,
   Quiz: QuizScreen
 });

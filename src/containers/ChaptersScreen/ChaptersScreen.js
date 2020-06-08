@@ -10,7 +10,7 @@ import {
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
 import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
 
-import { SwipeUpDownCustom } from "../../components/SwipeUpDown/SwipeUpDown";
+import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
 
 import { getChapters } from "../../store/actions/chapters";
 import { getUserData } from "../../store/actions/userData";
@@ -34,7 +34,7 @@ const ChaptersScreen = props => {
           completedChapters={props.userData}
           data-test="chapterList"
         />
-        <SwipeUpDownCustom data-test="swipeContainer" />
+        <UserBoardContainer data-test="swipeContainer" />
       </View>
     );
   }

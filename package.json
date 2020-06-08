@@ -34,7 +34,8 @@
     "react-native-gesture-handler": "~1.6.0",
     "react-native-popup-navigation": "^0.2.0",
     "react-native-progress": "^3.6.0",
-    "react-native-reanimated": "~1.7.0",
+    "react-native-reanimated": "^1.7.1",
+    "react-native-redash": "^14.1.1",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
     "react-native-snap-carousel": "^3.9.0",
@@ -50,7 +51,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "rn-sliding-up-panel": "^2.4.2"
+    "rn-sliding-up-panel": "^2.4.2",
+    "use-memo-one": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

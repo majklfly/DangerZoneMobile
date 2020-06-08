@@ -28,11 +28,9 @@ export const autoSignin = (token, userId) => {
   return dispatch => {
     const userIdInteger = parseInt(userId);
     if (token && userId) {
-      return dispatch => {
-        dispatch(authStart());
-        dispatch(authSuccess(token, userIdInteger));
-        navigate("Chapters");
-      };
+      dispatch(authStart());
+      dispatch(authSuccess(token, userIdInteger));
+      navigate("Chapters");
     }
   };
 };
