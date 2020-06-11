@@ -34,7 +34,7 @@
     "react-native-gesture-handler": "~1.6.0",
     "react-native-popup-navigation": "^0.2.0",
     "react-native-progress": "^3.6.0",
-    "react-native-reanimated": "^1.7.1",
+    "react-native-reanimated": "~1.7.0",
     "react-native-redash": "^14.1.1",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",

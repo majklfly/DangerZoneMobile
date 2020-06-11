@@ -12,7 +12,7 @@ import { navigate } from "../../navigationRef";
 
 import QuizSlider from "../../components/QuizSlider/QuizSlider";
 import { QuizScreenStyles as styles } from "./QuizScreenStyles";
-import { UserBoardContainer } from "../UserBoardContainer/UserBoardContainer";
+import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
 
 import { connect } from "react-redux";
 import { getQuizData } from "../../store/actions/quiz";

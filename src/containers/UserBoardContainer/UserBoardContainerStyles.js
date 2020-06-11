@@ -6,10 +6,7 @@ const { width, height } = Dimensions.get("window");
 export const UserBoardContainerStyles = StyleSheet.create({
   container: {
     position: "absolute",
-    backgroundColor: "red",
     width: width,
-    height: height + 40,
-    borderColor: "black",
-    borderWidth: 5
+    height: height
   }
 });

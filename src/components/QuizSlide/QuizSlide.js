@@ -6,15 +6,19 @@ import { QuizSlideStyles as styles } from "./QuizSlideStyles";
 
 const QuizSlide = React.forwardRef((props, ref) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const questionIndexRef = useRef(0);
+
+  ref.current ? console.log(ref.current.props.data.length) : null;
 
   const handleAnswer = isCorrect => {
-    questionIndexRef.current++;
-    console.log("questionIndex", questionIndexRef.current);
     ref.current.scrollToIndex({
-      index: questionIndexRef.current,
-      animated: true
+      animated: true,
+      index: props.quizIndex
     });
+    props.quizIndex === ref.current.props.data.length - 1
+      ? console.log("finish")
+      : props.setQuizIndex(props.quizIndex + 1);
+
+    console.log("questionIndex", props.quizIndex);
     if (isCorrect === true) {
       setCorrectAnswers(correctAnswers + 1);
       return console.log("hurray");
