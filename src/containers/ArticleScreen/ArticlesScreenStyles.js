@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get("window");
 
 export const ArticlesScreenStyles = StyleSheet.create({
   screen: {
-    backgroundColor: "#ff7110",
+    backgroundColor: "white",
     height: height
   }
 });

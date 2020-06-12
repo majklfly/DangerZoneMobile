@@ -9,28 +9,28 @@ export const ChapterButtonNegativeStyles = StyleSheet.create({
     margin: 5
   },
   indicator: {
-    height: 100,
-    width: 40,
-    backgroundColor: "#660000",
+    height: 130,
+    width: 100,
     borderWidth: 3,
     borderRightWidth: 0,
     borderRadius: 10,
+    borderColor: "#660000",
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0
   },
   textContainer: {
-    height: 100,
-    width: width - 90,
+    height: 130,
+    width: width - 150,
     borderWidth: 3,
     borderLeftWidth: 0,
-    borderColor: "black",
-    backgroundColor: "#364d79",
-    justifyContent: "center"
+    borderColor: "#660000",
+    justifyContent: "center",
+    alignItems: "center"
   },
   title: {
-    color: "white",
+    color: "black",
     alignSelf: "center",
     fontWeight: "bold",
-    fontSize: 15
+    fontSize: 26
   }
 });

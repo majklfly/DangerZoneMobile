@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 export const ArticleSliderStyles = StyleSheet.create({
   container: {
-    backgroundColor: "#ff7110",
+    backgroundColor: "white",
     paddingTop: 50
   }
 });

@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   AsyncStorage
 } from "react-native";
+import LottieView from "lottie-react-native";
 
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
 import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
@@ -39,11 +40,10 @@ const ChaptersScreen = props => {
     );
   }
   return (
-    <ActivityIndicator
-      size="large"
-      color="#0000ff"
-      style={styles.indicator}
-      data-test="chapterIndicator"
+    <LottieView
+      source={require("../../../assets/animations/7314-loading.json")}
+      autoPlay
+      loop
     />
   );
 };

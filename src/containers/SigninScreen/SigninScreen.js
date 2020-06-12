@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Text, Input, Button, Image } from "react-native-elements";
 import DropdownAlert from "react-native-dropdownalert";
+import LottieView from "lottie-react-native";
 
 import { SigninScreenStyles as styles } from "./SigninScreenStyles";
 import FacebookButton from "../../components/FacebookButton/FacebookButton";
@@ -69,7 +70,11 @@ const SigninScreen = props => {
       />
 
       {props.loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
+        <LottieView
+          source={require("../../../assets/animations/7314-loading.json")}
+          autoPlay
+          loop
+        />
       ) : (
         <View style={styles.formContainer}>
           <Input

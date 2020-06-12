@@ -9,9 +9,9 @@ export const ChapterButtonStyles = StyleSheet.create({
     margin: 5
   },
   indicator: {
-    height: 100,
-    width: 40,
-    backgroundColor: "#006633",
+    height: 130,
+    width: 100,
+    borderColor: "#FF7110",
     borderWidth: 3,
     borderRightWidth: 0,
     borderRadius: 10,
@@ -19,11 +19,16 @@ export const ChapterButtonStyles = StyleSheet.create({
     borderBottomRightRadius: 0
   },
   buttonStyle: {
-    height: 100,
-    width: width - 90,
+    height: 130,
+    width: width - 150,
     borderWidth: 3,
     borderLeftWidth: 0,
-    borderColor: "black",
-    backgroundColor: "#364d79"
+    borderColor: "#FF7110",
+    backgroundColor: "white"
+  },
+  title: {
+    fontSize: 27,
+    fontWeight: "bold",
+    color: "black"
   }
 });

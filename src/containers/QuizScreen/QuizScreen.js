@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { navigate } from "../../navigationRef";
+import LottieView from "lottie-react-native";
 
 import QuizSlider from "../../components/QuizSlider/QuizSlider";
 import { QuizScreenStyles as styles } from "./QuizScreenStyles";
@@ -37,7 +38,11 @@ const QuizScreen = props => {
     );
   }
   return (
-    <ActivityIndicator size="large" color="0000ff" style={styles.indicator} />
+    <LottieView
+      source={require("../../../assets/animations/7314-loading.json")}
+      autoPlay
+      loop
+    />
   );
 };
 
