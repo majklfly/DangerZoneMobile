@@ -9,7 +9,7 @@ const ChapterButtonNegative = props => {
     <View style={styles.buttonLayout} data-test="buttonContainer">
       <View style={styles.indicator}>
         <LottieView
-          source={require("../../../assets/animations/unlocked.json")}
+          source={require("../../../assets/animations/locked2.json")}
           autoPlay
         />
       </View>

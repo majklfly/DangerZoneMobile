@@ -22,7 +22,7 @@ const ChapterButtonPositive = props => {
     >
       <View style={styles.indicator}>
         <LottieView
-          source={require("../../../assets/animations/locked.json")}
+          source={require("../../../assets/animations/locked3.json")}
           autoPlay
           loop
         />

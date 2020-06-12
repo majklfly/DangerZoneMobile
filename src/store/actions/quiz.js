@@ -8,6 +8,13 @@ export const quizSuccess = payload => {
   };
 };
 
+export const quizResults = payload => {
+  return {
+    type: types.SET_QUIZRESULTS,
+    payload: payload
+  };
+};
+
 export const getQuizData = (token, chapterId) => async dispatch => {
   await server
     .get(`/quiz/`, {
@@ -22,5 +29,24 @@ export const getQuizData = (token, chapterId) => async dispatch => {
     })
     .catch(err => {
       console.log(err.response.data);
+    });
+};
+
+export const setQuizResults = (
+  token,
+  completed,
+  correct_answers,
+  user,
+  userData,
+  chapter
+) => async dispatch => {
+  await server
+    .post(
+      "/chapterdata/",
+      { completed, correct_answers, user, userData, chapter },
+      { headers: { authorization: `Token ${token}` } }
+    )
+    .then(res => {
+      dispatch(quizResults(correct_answers));
     });
 };

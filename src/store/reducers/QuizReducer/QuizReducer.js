@@ -7,6 +7,10 @@ const QuizReducer = (state = {}, action) => {
       return updatedObject(state, {
         quiz: action.payload
       });
+    case types.SET_QUIZRESULTS:
+      return updatedObject(state, {
+        correctAnswers: action.payload
+      });
     default:
       return state;
   }

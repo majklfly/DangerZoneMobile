@@ -9,8 +9,6 @@ const { width, height } = Dimensions.get("window");
 const ArticleSlider = props => {
   const [endOfList, setEndOfList] = useState(false);
 
-  console.log(endOfList);
-
   if (props.data) {
     return (
       <View style={styles.container} data-test="articleSliderContainer">

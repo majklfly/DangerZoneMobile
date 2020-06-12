@@ -24,6 +24,7 @@ import ChaptersScreen from "./src/containers/ChaptersScreen/ChaptersScreen";
 import ArticleScreen from "./src/containers/ArticleScreen/ArticleScreen";
 import TermsScreen from "./src/containers/TermsScreen/TermsScreen";
 import QuizScreen from "./src/containers/QuizScreen/QuizScreen";
+import QuizResultSlide from "./src/components/QuizResultSlide/QuizResultSlide";
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createMaterialTopTabNavigator(
@@ -45,7 +46,8 @@ const switchNavigator = createSwitchNavigator({
   Chapters: ChaptersScreen,
   Profile: ProfileScreen,
   Article: ArticleScreen,
-  Quiz: QuizScreen
+  Quiz: QuizScreen,
+  QuizResultSlide: QuizResultSlide
 });
 
 export const AppContainer = createAppContainer(switchNavigator);

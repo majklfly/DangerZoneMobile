@@ -5,23 +5,20 @@ import { Button } from "react-native-elements";
 import { QuizSlideStyles as styles } from "./QuizSlideStyles";
 
 const QuizSlide = React.forwardRef((props, ref) => {
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-
-  ref.current ? console.log(ref.current.props.data.length) : null;
-
-  const handleAnswer = isCorrect => {
-    ref.current.scrollToIndex({
-      animated: true,
-      index: props.quizIndex
-    });
-    props.quizIndex === ref.current.props.data.length - 1
-      ? console.log("finish")
+  const handleAnswer = (isCorrect, index) => {
+    props.item.index === ref.current.props.data.length - 1
+      ? props.setQuizCompleted(true)
       : props.setQuizIndex(props.quizIndex + 1);
 
-    console.log("questionIndex", props.quizIndex);
+    if (ref.current.props.data.length > props.quizIndex) {
+      ref.current.scrollToIndex({
+        animated: true,
+        index: props.quizIndex
+      });
+    }
+
     if (isCorrect === true) {
-      setCorrectAnswers(correctAnswers + 1);
-      return console.log("hurray");
+      props.setCorrectAnswers(props.correctAnswers + 1);
     }
   };
 
