@@ -66,6 +66,12 @@ const UserBoard = props => {
         >
           <AntDesign name="user" size={24} color="white" />
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigate("QuizResultSlide")}
+        >
+          <AntDesign name="question" size={24} color="white" />
+        </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => props.logout()}>
           <AntDesign name="logout" size={24} color="white" />
         </TouchableOpacity>

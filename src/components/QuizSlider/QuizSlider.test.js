@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 
 import QuizSlider from "./QuizSlider";
 
-import { findByTestAttr } from "../../utils";
+import { findByTestAttr, testStore } from "../../utils";
 
 configure({ adapter: new Adapter() });
 
@@ -18,16 +18,17 @@ jest.mock("../../../node_modules/react-redux/lib/utils/batch.js", () => ({
 
 const questions = [];
 
-const setUp = () => {
-  const wrapper = mount(<QuizSlider data={{ questions }} />);
-  console.log(wrapper.debug());
+const setUp = (initialState = {}) => {
+  const store = testStore(initialState);
+  const wrapper = mount(<QuizSlider store={store} data={{ questions }} />);
   return wrapper;
 };
 
 describe("QuizSlider", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = setUp();
+    const initialState = {};
+    wrapper = setUp(initialState);
   });
 
   it("should render the container", () => {

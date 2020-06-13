@@ -34,6 +34,7 @@ const UserBoardContainer = () => {
   return (
     <View style={styles.container}>
       <Animated.View
+        data-test="animationContainer"
         style={{ transform: [{ translateY: pan.y }] }}
         {...panResponder.panHandlers}
       >
