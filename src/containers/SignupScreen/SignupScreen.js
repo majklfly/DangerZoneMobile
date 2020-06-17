@@ -18,36 +18,28 @@ const SignupScreen = props => {
     handleError();
   };
 
-  const isObject = a => {
-    return !!a && a.constructor === Object;
-  };
-
   const handleError = () => {
-    const object = isObject(props.error);
-
-    switch (object) {
-      case object === true && "email" in props.error:
-        dropdown.alertWithType(
+    props.error !== null && props.error.email !== undefined
+      ? dropdown.alertWithType(
           "error",
           "Email error",
           `${props.error.email[0]}`
-        );
-        return "Please, add your password";
-      case object === true && "password1" in props.error:
-        dropdown.alertWithType(
+        )
+      : null;
+    props.error !== null && props.error.password1 !== undefined
+      ? dropdown.alertWithType(
           "error",
           "Password error",
           `${props.error.password1[0]}`
-        );
-      case object === true && "password2" in props.error:
-        dropdown.alertWithType(
+        )
+      : null;
+    props.error !== null && props.error.password2 !== undefined
+      ? dropdown.alertWithType(
           "error",
           "Password error",
           `${props.error.password2[0]}`
-        );
-      default:
-        return null;
-    }
+        )
+      : null;
   };
 
   return (

@@ -21,13 +21,24 @@ const UserBoardContainer = () => {
       onPanResponderRelease: () => {
         fullScreen === 0 ? fullScreen.setValue(1) : fullScreen.setValue(0);
         pan.flattenOffset();
-        Animated.spring(
-          pan,
-          {
-            toValue: pan.y._value >= height - 110 ? springPoint2 : springPoint1
-          },
-          { useNativeDriver: true }
-        ).start();
+        console.log(pan.y._value);
+        if (pan.y._value <= 500) {
+          Animated.spring(
+            pan,
+            {
+              toValue: springPoint1
+            },
+            { useNativeDriver: true }
+          ).start();
+        } else if (pan.y._value >= 500) {
+          Animated.spring(
+            pan,
+            {
+              toValue: springPoint2
+            },
+            { useNativeDriver: true }
+          ).start();
+        }
       }
     })
   ).current;

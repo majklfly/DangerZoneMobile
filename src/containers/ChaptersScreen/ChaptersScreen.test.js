@@ -18,7 +18,9 @@ jest.mock("../../../node_modules/react-redux/lib/utils/batch.js", () => ({
 
 const setUp = (initialState = {}) => {
   const store = testStore(initialState);
-  const wrapper = mount(<ChaptersScreen store={store} />);
+  const wrapper = mount(<ChaptersScreen store={store} />)
+    .dive()
+    .dive();
   return wrapper;
 };
 

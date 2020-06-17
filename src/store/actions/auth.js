@@ -46,7 +46,6 @@ export const Signup = (username, email, password1, password2) => {
         password2
       })
       .then(res => {
-        console.log("res", res);
         const token = res.data.key;
         const userId = res.data.user.pk;
         AsyncStorage.setItem("token", token);
@@ -55,7 +54,7 @@ export const Signup = (username, email, password1, password2) => {
         navigate("Chapters");
       })
       .catch(error => {
-        dispatch(authFail(error));
+        dispatch(authFail(error.response.data));
       });
   };
 };

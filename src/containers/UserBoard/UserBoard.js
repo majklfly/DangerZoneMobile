@@ -34,11 +34,9 @@ const UserBoard = props => {
 
   return (
     <View style={styles.mainContainer} data-test="mainContainer">
-      {props.value && <Icon style={styles.icon} name="chevron-up" size={32} />}
-      {!props.value && <Icon style={styles.icon} name="chevron-up" size={32} />}
       {props.userData.userdata ? (
         <Text style={styles.title} data-test="userBoardText">
-          What's up, {props.userData.userdata.firstName}
+          What's up, {props.userData.userdata.username}
         </Text>
       ) : null}
       <AnimatedCircularProgress
