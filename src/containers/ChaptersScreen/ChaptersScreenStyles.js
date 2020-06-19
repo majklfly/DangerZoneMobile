@@ -8,7 +8,7 @@ export const ChaptersScreenStyles = StyleSheet.create({
     width: width,
     paddingHorizontal: 20,
     paddingTop: 60,
-    paddingBottom: 20,
+    paddingBottom: 50,
     backgroundColor: "white"
   },
   indicator: {

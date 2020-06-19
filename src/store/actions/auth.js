@@ -90,6 +90,7 @@ export const FacebookLogin = token => {
   const access_token = token;
 
   return dispatch => {
+    dispatch(authStart());
     server
       .post("/social/", {
         provider,

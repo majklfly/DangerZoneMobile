@@ -1,5 +1,6 @@
 import { types } from "./actionTypes";
 import server from "../../api/server";
+import { AsyncStorage } from "react-native";
 
 export const userDataSuccess = payload => {
   return {
@@ -19,6 +20,18 @@ export const getUserData = (token, userId) => async dispatch => {
           dispatch(userDataSuccess(user));
         }
       });
+    })
+    .catch(err => console.log(err.response.data));
+};
+
+export const updateUserData = (token, userdataId, data) => async dispatch => {
+  const options = {
+    headers: { authorization: `Token ${token}` }
+  };
+  await server
+    .patch(`/userdata/${userdataId}/`, data, options)
+    .then(res => {
+      console.log("wiiiiiii");
     })
     .catch(err => console.log(err));
 };
