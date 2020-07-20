@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Button } from "react-native-elements";
 import LottieView from "lottie-react-native";
 
@@ -21,10 +21,9 @@ const ChapterButtonPositive = (props) => {
       data-test="chapterButtonPositive"
     >
       <View style={styles.indicator}>
-        <LottieView
-          source={require("../../main/assets/images/18468-wash-your-hand-covid19-corona.json")}
-          imageAssetsFolder={"images"}
-          autoPlay
+        <Image
+          source={require("../../assets/images/handwashing.gif")}
+          style={styles.animation}
         />
       </View>
       <Button
