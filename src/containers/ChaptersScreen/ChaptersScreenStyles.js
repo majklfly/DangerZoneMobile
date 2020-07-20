@@ -9,9 +9,8 @@ export const ChaptersScreenStyles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 60,
     paddingBottom: 50,
-    backgroundColor: "white"
   },
   indicator: {
-    margin: 100
-  }
+    margin: 100,
+  },
 });

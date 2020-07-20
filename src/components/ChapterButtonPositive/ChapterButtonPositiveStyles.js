@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get("window");
 export const ChapterButtonStyles = StyleSheet.create({
   buttonLayout: {
     flexDirection: "row",
-    margin: 5
+    margin: 5,
   },
   indicator: {
     height: 130,
@@ -16,7 +16,7 @@ export const ChapterButtonStyles = StyleSheet.create({
     borderRightWidth: 0,
     borderRadius: 10,
     borderTopRightRadius: 0,
-    borderBottomRightRadius: 0
+    borderBottomRightRadius: 0,
   },
   buttonStyle: {
     height: 130,
@@ -24,11 +24,11 @@ export const ChapterButtonStyles = StyleSheet.create({
     borderWidth: 3,
     borderLeftWidth: 0,
     borderColor: "#FF7110",
-    backgroundColor: "white"
+    backgroundColor: "transparent",
   },
   title: {
     fontSize: 27,
     fontWeight: "bold",
-    color: "black"
-  }
+    color: "black",
+  },
 });

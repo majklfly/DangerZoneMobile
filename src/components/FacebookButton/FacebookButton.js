@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 import { FacebookButtonStyles as styles } from "./FacebookButtonStyles";
 
-const FacebookButton = props => {
+const FacebookButton = (props) => {
   async function logIn() {
     try {
       await Facebook.initializeAsync("723054295168510");
@@ -17,9 +17,9 @@ const FacebookButton = props => {
         token,
         expires,
         permissions,
-        declinedPermissions
+        declinedPermissions,
       } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ["public_profile"]
+        permissions: ["public_profile"],
       });
       if (type === "success") {
         props.FacebookLogin(token);
@@ -43,15 +43,15 @@ const FacebookButton = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    FacebookLogin: token => {
+    FacebookLogin: (token) => {
       dispatch(FacebookLogin(token));
-    }
+    },
   };
 };
 

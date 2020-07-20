@@ -3,9 +3,9 @@ import { types } from "./actionTypes";
 import server from "../../api/server";
 import { navigate } from "../../navigationRef";
 
-export const authStart = userData => {
+export const authStart = (userData) => {
   return {
-    type: types.AUTH_START
+    type: types.AUTH_START,
   };
 };
 
@@ -13,19 +13,19 @@ export const authSuccess = (token, userId) => {
   return {
     type: types.AUTH_SUCCESS,
     token: token,
-    userId: userId
+    userId: userId,
   };
 };
 
-export const authFail = error => {
+export const authFail = (error) => {
   return {
     type: types.AUTH_FAIL,
-    error: error
+    error: error,
   };
 };
 
 export const autoSignin = (token, userId) => {
-  return dispatch => {
+  return (dispatch) => {
     const userIdInteger = parseInt(userId);
     if (token && userId) {
       dispatch(authStart());
@@ -36,16 +36,16 @@ export const autoSignin = (token, userId) => {
 };
 
 export const Signup = (username, email, password1, password2) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(authStart());
     server
       .post("/rest-auth/registration", {
         username,
         email,
         password1,
-        password2
+        password2,
       })
-      .then(res => {
+      .then((res) => {
         const token = res.data.key;
         const userId = res.data.user.pk;
         AsyncStorage.setItem("token", token);
@@ -53,56 +53,58 @@ export const Signup = (username, email, password1, password2) => {
         dispatch(authSuccess(token, userId));
         navigate("Chapters");
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(authFail(error.response.data));
       });
   };
 };
 
 export const Signin = (username, password) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(authStart());
     server
       .post("/rest-auth/login/", {
         username,
-        password
+        password,
       })
-      .then(res => {
+      .then((res) => {
         const token = res.data.key;
         const userId = res.data.user.pk;
         const userIdStr = JSON.stringify(userId);
         const data = [
           ["token", token],
-          ["userId", userIdStr]
+          ["userId", userIdStr],
         ];
         AsyncStorage.multiSet(data);
         dispatch(authSuccess(token, userId));
         navigate("Chapters");
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(authFail(error.response.data));
       });
   };
 };
 
-export const FacebookLogin = token => {
+export const FacebookLogin = (token) => {
   const provider = "facebook";
   const access_token = token;
 
-  return dispatch => {
+  return (dispatch) => {
     dispatch(authStart());
     server
       .post("/social/", {
         provider,
-        access_token
+        access_token,
       })
-      .then(res => {
+      .then((res) => {
         const token = res.data.token;
         const userId = res.data.id;
         dispatch(authSuccess(token, userId));
+        AsyncStorage.setItem("token", res.data.token);
+        AsyncStorage.setItem("userId", res.data.id);
         navigate("Chapters");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.response.data);
       });
   };
@@ -110,7 +112,7 @@ export const FacebookLogin = token => {
 
 export const logout = () => {
   console.log("Async cleared");
-  return dispatch => {
+  return (dispatch) => {
     AsyncStorage.clear().then(() => navigate("Signin"));
   };
 };

@@ -8,8 +8,8 @@ import { AsyncStorage } from "react-native";
 
 import { ChapterButtonStyles as styles } from "./ChapterButtonPositiveStyles";
 
-const ChapterButtonPositive = props => {
-  const handleButton = async title => {
+const ChapterButtonPositive = (props) => {
+  const handleButton = async (title) => {
     const indexStringified = JSON.stringify(props.chapterIndex);
     await AsyncStorage.setItem("currentChapterIndex", indexStringified);
     navigate("Article");
@@ -22,9 +22,9 @@ const ChapterButtonPositive = props => {
     >
       <View style={styles.indicator}>
         <LottieView
-          source={require("../../../assets/animations/locked3.json")}
+          source={require("../../main/assets/images/18468-wash-your-hand-covid19-corona.json")}
+          imageAssetsFolder={"images"}
           autoPlay
-          loop
         />
       </View>
       <Button

@@ -4,12 +4,13 @@ import {
   Text,
   StyleSheet,
   ActivityIndicator,
-  AsyncStorage
+  AsyncStorage,
 } from "react-native";
-import LottieView from "lottie-react-native";
 
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
 import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
+import LottieView from "lottie-react-native";
+import Background from "../../components/Background/Background";
 
 import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
 
@@ -17,7 +18,7 @@ import { getChapters } from "../../store/actions/chapters";
 import { getUserData } from "../../store/actions/userData";
 import { connect } from "react-redux";
 
-const ChaptersScreen = props => {
+const ChaptersScreen = (props) => {
   useEffect(() => {
     props.getChapters(props.token);
     props.getUserData(props.token, props.userId);
@@ -30,6 +31,7 @@ const ChaptersScreen = props => {
     );
     return (
       <View style={styles.container} data-test="chapterContainer">
+        <Background />
         <ChaptersList
           chapters={props.chapters}
           completedChapters={props.userData}
@@ -48,23 +50,23 @@ const ChaptersScreen = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     token: state.AuthReducer.token,
     userId: state.AuthReducer.userId,
     chapters: state.ChapterReducer,
-    userData: state.userDataReducer
+    userData: state.userDataReducer,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getChapters: token => {
+    getChapters: (token) => {
       dispatch(getChapters(token));
     },
     getUserData: (token, userId) => {
       dispatch(getUserData(token, userId));
-    }
+    },
   };
 };
 

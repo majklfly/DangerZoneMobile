@@ -11,24 +11,14 @@ import { getChapter } from "../../store/actions/chapters";
 import { connect } from "react-redux";
 import { AsyncStorage } from "react-native";
 
-const ArticleScreen = props => {
+const ArticleScreen = (props) => {
   const retrieveData = async () => {
-    let currentChapterIndex;
-    let token;
-    try {
-      const keys = await AsyncStorage.getAllKeys();
-      const result = await AsyncStorage.multiGet(keys);
-      result.map((item, index) => {
-        if (item[0] === "currentChapterIndex") {
-          return (currentChapterIndex = item[1]);
-        } else if (item[0] === "token") {
-          return (token = item[1]);
-        }
-      });
-      props.getChapter(token, currentChapterIndex);
-    } catch (error) {
-      console.log(error);
-    }
+    const token = await AsyncStorage.getItem("token");
+    const currentChapterIndex = await AsyncStorage.getItem(
+      "currentChapterIndex"
+    );
+    console.log(token);
+    props.getChapter(token, currentChapterIndex);
   };
 
   useEffect(() => {
@@ -43,17 +33,17 @@ const ArticleScreen = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    chapter: state.ChapterReducer.chapter
+    chapter: state.ChapterReducer.chapter,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getChapter: (token, index) => {
       dispatch(getChapter(token, index));
-    }
+    },
   };
 };
 
