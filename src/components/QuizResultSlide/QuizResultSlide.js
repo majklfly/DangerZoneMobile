@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import LottieView from "lottie-react-native";
 import UserBoardContainer from "../../containers/UserBoardContainer/UserBoardContainer";
 
-const QuizResultSlide = props => {
+const QuizResultSlide = (props) => {
   const correctAnswers = props.correctAnswers.correctAnswers;
   if (correctAnswers > 3) {
     return (
@@ -22,7 +22,7 @@ const QuizResultSlide = props => {
           data-test="positiveAnimation"
         />
         <Text style={styles.footer} accessibilityRole="button">
-          What you gonna do now?
+          What would you like to do know?
         </Text>
         <UserBoardContainer data-test="userBoard" />
       </View>
@@ -42,16 +42,16 @@ const QuizResultSlide = props => {
         data-test="negativeAnimation"
       />
       <Text style={styles.footer} accessibilityRole="button">
-        What you gonna do now?
+        Maybe you would like to revisit the chapter?
       </Text>
       <UserBoardContainer data-test="userBoard" />
     </View>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    correctAnswers: state.QuizReducer
+    correctAnswers: state.QuizReducer,
   };
 };
 

@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import { AsyncStorage } from "react-native";
 import { navigate } from "../../navigationRef";
@@ -17,7 +17,7 @@ import LottieView from "lottie-react-native";
 import { connect } from "react-redux";
 import { updateUserData } from "../../store/actions/userData";
 
-const ProfileForm = props => {
+const ProfileForm = (props) => {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [company, setCompany] = useState(null);
@@ -36,7 +36,7 @@ const ProfileForm = props => {
       ...(country && { country }),
       ...(facebook && { facebook }),
       ...(twitter && { twitter }),
-      ...(reddit && { reddit })
+      ...(reddit && { reddit }),
     });
     props.updateUserData(props.token, props.userdata.id, data());
     navigate("Chapters");
@@ -68,7 +68,7 @@ const ProfileForm = props => {
           <Text style={styles.textInputLabel}>First Name</Text>
           <TextInput
             style={styles.textInput}
-            onChangeText={text => setFirstName(text)}
+            onChangeText={(text) => setFirstName(text)}
             value={firstName}
           />
         </View>
@@ -76,7 +76,7 @@ const ProfileForm = props => {
           <Text style={styles.textInputLabel}>Last Name</Text>
           <TextInput
             style={styles.textInput}
-            onChangeText={text => setLastName(text)}
+            onChangeText={(text) => setLastName(text)}
             value={lastName}
           />
         </View>
@@ -84,7 +84,7 @@ const ProfileForm = props => {
           <Text style={styles.textInputLabel}>Company</Text>
           <TextInput
             style={styles.textInput}
-            onChangeText={text => setCompany(text)}
+            onChangeText={(text) => setCompany(text)}
             value={company}
           />
         </View>
@@ -92,7 +92,7 @@ const ProfileForm = props => {
           <Text style={styles.textInputLabel}>Position</Text>
           <TextInput
             style={styles.textInput}
-            onChangeText={text => setPosition(text)}
+            onChangeText={(text) => setPosition(text)}
             value={position}
           />
         </View>
@@ -100,7 +100,7 @@ const ProfileForm = props => {
           <Text style={styles.textInputLabel}>Country</Text>
           <TextInput
             style={styles.textInput}
-            onChangeText={text => setCountry(text)}
+            onChangeText={(text) => setCountry(text)}
             value={country}
           />
         </View>
@@ -109,7 +109,7 @@ const ProfileForm = props => {
           <TextInput
             autoCapitalize="none"
             style={styles.textInput}
-            onChangeText={text => setFacebook(text)}
+            onChangeText={(text) => setFacebook(text)}
             value={facebook}
           />
         </View>
@@ -118,7 +118,7 @@ const ProfileForm = props => {
           <TextInput
             autoCapitalize="none"
             style={styles.textInput}
-            onChangeText={text => setTwitter(text)}
+            onChangeText={(text) => setTwitter(text)}
             value={twitter}
           />
         </View>
@@ -127,12 +127,13 @@ const ProfileForm = props => {
           <TextInput
             autoCapitalize="none"
             style={styles.textInput}
-            onChangeText={text => setReddit(text)}
+            onChangeText={(text) => setReddit(text)}
             value={reddit}
           />
         </View>
         <Button
           title="update my profile, please"
+          titleStyle={{ fontFamily: "MontSerrat" }}
           buttonStyle={styles.submitButton}
           onPress={() => handleSubmit()}
         />
@@ -141,18 +142,18 @@ const ProfileForm = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     userdata: state.userDataReducer.userdata,
-    token: state.AuthReducer.token
+    token: state.AuthReducer.token,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     updateUserData: (token, userDataId, firstName) => {
       dispatch(updateUserData(token, userDataId, firstName));
-    }
+    },
   };
 };
 

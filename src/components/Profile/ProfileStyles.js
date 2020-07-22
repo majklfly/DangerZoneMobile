@@ -6,16 +6,16 @@ const { width, height } = Dimensions.get("window");
 export const ProfileStyles = StyleSheet.create({
   title: {
     fontSize: 48,
-    textAlign: "center"
+    textAlign: "center",
   },
   icon: {
     fontSize: 40,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   iconsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 40
+    padding: 40,
   },
   facebookIcon: {
     fontSize: 30,
@@ -25,7 +25,7 @@ export const ProfileStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     backgroundColor: "#4267B2",
-    color: "white"
+    color: "white",
   },
   twitterIcon: {
     fontSize: 30,
@@ -36,7 +36,7 @@ export const ProfileStyles = StyleSheet.create({
     textAlign: "center",
     padding: 10,
     borderRadius: 50,
-    color: "#1DA1F2"
+    color: "#1DA1F2",
   },
   redditIcon: {
     fontSize: 30,
@@ -45,13 +45,13 @@ export const ProfileStyles = StyleSheet.create({
     height: 50,
     textAlign: "center",
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
   titleContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    paddingTop: 10
+    paddingTop: 10,
   },
   container: {
     width: width - 60,
@@ -59,20 +59,21 @@ export const ProfileStyles = StyleSheet.create({
     marginTop: 50,
     borderColor: "#ff7110",
     borderWidth: 3,
-    height: height - 60
+    height: height - 60,
+    borderRadius: 20,
   },
   textContainer: {
-    padding: 10
+    padding: 10,
   },
   textlineContainer: {
-    paddingTop: 2
+    paddingTop: 2,
   },
   textline: {
-    fontSize: 33
+    fontSize: 33,
   },
   label: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "#ff7110"
-  }
+    color: "#ffffff8b",
+  },
 });

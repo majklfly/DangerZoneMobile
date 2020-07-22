@@ -11,7 +11,7 @@ const { width } = Dimensions.get("window");
 
 const token = "fdsafdsafdas";
 
-const QuizSlider = props => {
+const QuizSlider = (props) => {
   const [quizIndex, setQuizIndex] = useState(1);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -38,7 +38,8 @@ const QuizSlider = props => {
           data-test="quizSliderFlatlist"
           data={props.data.questions}
           keyExtractor={(item, index) => "key" + index}
-          renderItem={item => {
+          scrollEnabled={false}
+          renderItem={(item) => {
             return (
               <QuizSlide
                 item={item}
@@ -64,16 +65,16 @@ const QuizSlider = props => {
   return null;
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     token: state.AuthReducer.token,
     userId: state.AuthReducer.userId,
     chapterId: state.ChapterReducer,
-    userDataId: state.userDataReducer.userdata
+    userDataId: state.userDataReducer.userdata,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     setQuizResults: (
       token,
@@ -93,7 +94,7 @@ const mapDispatchToProps = dispatch => {
           chapterId
         )
       );
-    }
+    },
   };
 };
 

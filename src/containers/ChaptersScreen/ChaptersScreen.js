@@ -31,7 +31,6 @@ const ChaptersScreen = (props) => {
     );
     return (
       <View style={styles.container} data-test="chapterContainer">
-        <Background />
         <ChaptersList
           chapters={props.chapters}
           completedChapters={props.userData}

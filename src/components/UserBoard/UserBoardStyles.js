@@ -9,7 +9,7 @@ export const UserBoardStyles = StyleSheet.create({
     backgroundColor: "#ff7110",
     justifyContent: "space-between",
     paddingBottom: 50,
-    paddingTop: 40
+    paddingTop: 40,
   },
   button: {
     width: 80,
@@ -19,28 +19,29 @@ export const UserBoardStyles = StyleSheet.create({
     justifyContent: "center",
     margin: 20,
     backgroundColor: "#364d79",
-    borderWidth: 5
+    borderWidth: 5,
   },
   title: {
     fontSize: 40,
     paddingTop: 20,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   buttonsContainer: {
-    alignItems: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   progressBar: {
     alignSelf: "center",
-    marginBottom: 200
+    marginBottom: 200,
   },
   points: {
-    fontSize: 40
+    fontSize: 40,
   },
   icon: {
     color: "white",
     alignSelf: "center",
-    marginTop: -30
-  }
+    marginTop: -30,
+  },
 });

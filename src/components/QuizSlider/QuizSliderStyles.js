@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 
 export const QuizSliderStyles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    paddingTop: 50
-  }
+    paddingTop: 50,
+  },
 });

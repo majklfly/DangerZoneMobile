@@ -1,45 +1,23 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { Text, Input, Button, Image } from "react-native-elements";
 import { SignupScreenStyles as styles } from "./SignupScreenStyles";
-import DropdownAlert from "react-native-dropdownalert";
 
 import { connect } from "react-redux";
 import { Signup } from "../../store/actions/auth";
 
-const SignupScreen = props => {
+const SignupScreen = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
+  const [isfocusedUsername, setIsFocusedUsername] = useState(false);
+  const [isfocusedEmail, setIsFocusedEmail] = useState(false);
+  const [isfocusedPassword1, setIsFocusedPassword1] = useState(false);
+  const [isfocusedPassword2, setIsFocusedPassword2] = useState(false);
 
   const handleSubmit = () => {
     props.Signup(username, email, password1, password2);
-    handleError();
-  };
-
-  const handleError = () => {
-    props.error !== null && props.error.email !== undefined
-      ? dropdown.alertWithType(
-          "error",
-          "Email error",
-          `${props.error.email[0]}`
-        )
-      : null;
-    props.error !== null && props.error.password1 !== undefined
-      ? dropdown.alertWithType(
-          "error",
-          "Password error",
-          `${props.error.password1[0]}`
-        )
-      : null;
-    props.error !== null && props.error.password2 !== undefined
-      ? dropdown.alertWithType(
-          "error",
-          "Password error",
-          `${props.error.password2[0]}`
-        )
-      : null;
   };
 
   return (
@@ -51,65 +29,149 @@ const SignupScreen = props => {
       />
       <View style={styles.formContainer} data-test="formContainer">
         <Input
-          label="Username"
           value={username}
+          placeholder="Username"
+          placeholderTextColor={isfocusedUsername ? "transparent" : "lightgrey"}
           onChangeText={setUsername}
           autoCapitalize="none"
           autoCorrect={false}
-        />
-        <Input
-          label="Email"
-          value={email}
-          onChangeText={setEmail}
-          autoCapitalize="none"
+          onFocus={() => setIsFocusedUsername(true)}
+          onBlur={() => setIsFocusedUsername(false)}
+          clearTextOnFocus={true}
+          inputStyle={{
+            color: "white",
+            textAlign: "center",
+            fontFamily: "MontSerrat",
+          }}
+          inputContainerStyle={{
+            borderColor: "white",
+          }}
+          containerStyle={{ marginVertical: 20, paddingHorizontal: 30 }}
           autoCorrect={false}
         />
+        <Text style={styles.errorMessage}>
+          {props.error && props.error.username}
+        </Text>
+        <Input
+          value={email}
+          placeholder="Email"
+          placeholderTextColor={isfocusedEmail ? "transparent" : "lightgrey"}
+          onChangeText={setEmail}
+          autoCapitalize="none"
+          onFocus={() => setIsFocusedEmail(true)}
+          onBlur={() => setIsFocusedEmail(false)}
+          clearTextOnFocus={true}
+          inputStyle={{
+            color: "white",
+            textAlign: "center",
+            fontFamily: "MontSerrat",
+          }}
+          inputContainerStyle={{
+            borderColor: "white",
+          }}
+          containerStyle={{
+            marginVertical: 20,
+            marginTop: -20,
+            paddingHorizontal: 30,
+          }}
+          autoCorrect={false}
+        />
+        <Text style={styles.errorMessage}>
+          {props.error && props.error.email}
+        </Text>
         <Input
           secureTextEntry
-          label="Password"
+          placeholder="Password"
+          placeholderTextColor={
+            isfocusedPassword1 ? "transparent" : "lightgrey"
+          }
+          onFocus={() => setIsFocusedPassword1(true)}
+          onBlur={() => setIsFocusedPassword1(false)}
           value={password1}
           onChangeText={setPassword1}
           autoCapitalize="none"
+          clearTextOnFocus={true}
+          inputStyle={{
+            color: "white",
+            textAlign: "center",
+            fontFamily: "MontSerrat",
+          }}
+          inputContainerStyle={{
+            borderColor: "white",
+          }}
+          containerStyle={{
+            marginVertical: 20,
+            marginTop: -20,
+            paddingHorizontal: 30,
+          }}
           autoCorrect={false}
         />
+        <Text style={styles.errorMessage}>
+          {props.error && props.error.password1
+            ? props.error.password1[0]
+            : null}
+        </Text>
         <Input
           secureTextEntry
-          label="Confirm Password"
+          placeholder="Confirm Password"
+          placeholderTextColor={
+            isfocusedPassword2 ? "transparent" : "lightgrey"
+          }
+          onFocus={() => setIsFocusedPassword2(true)}
+          onBlur={() => setIsFocusedPassword2(false)}
           value={password2}
           onChangeText={setPassword2}
           autoCapitalize="none"
+          clearTextOnFocus={true}
+          inputStyle={{
+            color: "white",
+            textAlign: "center",
+            fontFamily: "MontSerrat",
+          }}
+          inputContainerStyle={{
+            borderColor: "white",
+          }}
+          containerStyle={{
+            marginVertical: 20,
+            marginTop: -20,
+            paddingHorizontal: 30,
+          }}
           autoCorrect={false}
         />
+        <Text style={styles.errorMessage}>
+          {props.error && props.error.password2
+            ? props.error.password2[0]
+            : password1 !== password2 && "please confirm the password"}
+        </Text>
         <Button
           buttonStyle={styles.signupButton}
           onPress={() => handleSubmit()}
           title="Sign Up"
+          titleStyle={{ fontFamily: "MontSerrat" }}
           data-test="signupButton"
         />
-        <Text style={styles.link}> Sign In </Text>
       </View>
-      <DropdownAlert ref={ref => (dropdown = ref)} />
     </View>
   );
 };
 
 SignupScreen.navigationOptions = () => {
   return {
-    headerShown: false
+    headerShown: false,
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    error: state.AuthReducer.error
+    error: state.AuthReducer.error,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     Signup: (username, email, password1, password2) => {
       dispatch(Signup(username, email, password1, password2));
-    }
+    },
   };
 };
 

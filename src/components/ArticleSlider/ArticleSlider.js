@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, FlatList, Dimensions } from "react-native";
-import Background from "../Background/Background";
 
 import { ArticleSliderStyles as styles } from "./ArticleSliderStyles";
 import ArticleSlide from "../ArticleSlide/ArticleSlide";
@@ -28,7 +27,6 @@ const ArticleSlider = (props) => {
           onEndReachedThreshold={1}
           onEndReached={() => setEndOfList(true)}
         />
-        <Background />
       </View>
     );
   }

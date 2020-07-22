@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { Text, Input, Button, Image } from "react-native-elements";
-import DropdownAlert from "react-native-dropdownalert";
+import { View } from "react-native";
+import { Text, Input, Button } from "react-native-elements";
 import LottieView from "lottie-react-native";
 
 import { SigninScreenStyles as styles } from "./SigninScreenStyles";
 import FacebookButton from "../../components/FacebookButton/FacebookButton";
+import Background from "../../components/Background/Background";
 
 import { AsyncStorage } from "react-native";
 
 import { connect } from "react-redux";
 import { Signin, autoSignin } from "../../store/actions/auth";
 
-const SigninScreen = props => {
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+  faAngleDoubleRight,
+  faAngleDoubleLeft,
+} from "@fortawesome/free-solid-svg-icons";
+
+const SigninScreen = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isfocusedUsername, setIsFocusedUsername] = useState(false);
+  const [isfocusedPassword, setIsFocusedPassword] = useState(false);
 
   const handleSubmit = () => {
     props.Signin(username, password);
-    handleError();
   };
 
   const selfLogin = async () => {
@@ -26,7 +33,7 @@ const SigninScreen = props => {
     const result = await AsyncStorage.multiGet(keys);
 
     const loginData = [];
-    result.map(item => {
+    result.map((item) => {
       if (item[0] === "token") {
         loginData.push(item[1]);
       } else if (item[0] === "userId") {
@@ -36,39 +43,12 @@ const SigninScreen = props => {
     props.autoSignin(loginData[0], loginData[1]);
   };
 
-  const handleError = () => {
-    console.log("error", props.error);
-    if (props.error !== null) {
-      if ("password" in props.error) {
-        dropdown.alertWithType(
-          "error",
-          "Password error",
-          "Please, add your password"
-        );
-      } else if ("non_field_errors" in props.error) {
-        dropdown.alertWithType(
-          "error",
-          "Wrong Credentials",
-          `${props.error.non_field_errors[0]}`
-        );
-      }
-    } else {
-      console.log(props.error);
-    }
-  };
-
   useEffect(() => {
     selfLogin();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.stretch}
-        source={require("../../../assets/icon.png")}
-        data-test="logo"
-      />
-
       {props.loading ? (
         <LottieView
           source={require("../../../assets/animations/7314-loading.json")}
@@ -76,50 +56,99 @@ const SigninScreen = props => {
           loop
         />
       ) : (
-        <View style={styles.formContainer}>
-          <Input
-            label="Username"
-            value={username}
-            onChangeText={setUsername}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Input
-            secureTextEntry
-            label="Password"
-            value={password}
-            onChangeText={setPassword}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Button
-            buttonStyle={styles.signinButton}
-            onPress={() => handleSubmit()}
-            title="Sign Up"
-          />
-          <FacebookButton />
-        </View>
+        <>
+          <View style={styles.iconContainer1}>
+            <FontAwesomeIcon
+              icon={faAngleDoubleRight}
+              style={styles.icon}
+              size={30}
+            />
+            <Text style={styles.iconText}>Signup</Text>
+          </View>
+          <View style={styles.iconContainer2}>
+            <FontAwesomeIcon
+              icon={faAngleDoubleLeft}
+              style={styles.icon}
+              size={30}
+            />
+            <Text style={styles.iconText}>Privacy</Text>
+          </View>
+          <View style={styles.formContainer}>
+            <Input
+              value={username}
+              placeholder="Username"
+              placeholderTextColor={
+                isfocusedUsername ? "transparent" : "lightgrey"
+              }
+              onChangeText={setUsername}
+              autoCapitalize="none"
+              autoCorrect={false}
+              onFocus={() => setIsFocusedUsername(true)}
+              clearTextOnFocus={true}
+              inputStyle={{
+                color: "white",
+                textAlign: "center",
+                fontFamily: "MontSerrat",
+              }}
+              inputContainerStyle={{
+                borderColor: "white",
+              }}
+              containerStyle={{ marginVertical: 20 }}
+            />
+            <Input
+              secureTextEntry
+              placeholder="Password"
+              placeholderTextColor="white"
+              placeholderTextColor={
+                isfocusedPassword ? "transparent" : "lightgrey"
+              }
+              value={password}
+              onChangeText={setPassword}
+              onFocus={() => setIsFocusedPassword(true)}
+              autoCapitalize="none"
+              autoCorrect={false}
+              inputStyle={{
+                color: "white",
+                textAlign: "center",
+                fontFamily: "MontSerrat",
+              }}
+              inputContainerStyle={{ borderColor: "white" }}
+            />
+            <Text style={styles.errorMessage}>
+              {props.error && props.error.password}
+            </Text>
+            <Text style={styles.errorMessage}>
+              {props.error && props.error.non_field_errors}
+            </Text>
+            <Button
+              buttonStyle={styles.signinButton}
+              onPress={() => handleSubmit()}
+              title="Sign Up"
+              titleStyle={{ fontFamily: "MontSerrat" }}
+            />
+            <FacebookButton />
+          </View>
+        </>
       )}
-      <DropdownAlert ref={ref => (dropdown = ref)} />
     </View>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     error: state.AuthReducer.error,
-    loading: state.AuthReducer.loading
+    loading: state.AuthReducer.loading,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     Signin: (username, password) => {
       dispatch(Signin(username, password));
     },
     autoSignin: (token, userId) => {
       dispatch(autoSignin(token, userId));
-    }
+    },
   };
 };
 

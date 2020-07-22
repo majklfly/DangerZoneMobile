@@ -7,6 +7,6 @@ export const UserBoardContainerStyles = StyleSheet.create({
   container: {
     position: "absolute",
     width: width,
-    height: height + 10
-  }
+    height: height + 10,
+  },
 });

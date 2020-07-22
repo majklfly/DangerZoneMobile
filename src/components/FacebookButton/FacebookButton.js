@@ -36,6 +36,7 @@ const FacebookButton = (props) => {
       data-test="facebookButton"
       buttonStyle={styles.button}
       title="  Facebook Login"
+      titleStyle={{ fontFamily: "MontSerrat" }}
       icon={<Icon name="facebook-square" size={25} color="white" />}
       containerStyle={styles.iconContainer}
       onPress={() => logIn()}

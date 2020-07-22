@@ -17,7 +17,6 @@ const ArticleScreen = (props) => {
     const currentChapterIndex = await AsyncStorage.getItem(
       "currentChapterIndex"
     );
-    console.log(token);
     props.getChapter(token, currentChapterIndex);
   };
 

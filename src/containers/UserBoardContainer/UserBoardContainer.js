@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { UserBoardContainerStyles as styles } from "./UserBoardContainerStyles";
-import { Animated, PanResponder, View, Dimensions } from "react-native";
-import UserBoard from "../UserBoard/UserBoard";
+import { Animated, PanResponder, View, Dimensions, Text } from "react-native";
+import UserBoard from "../../components/UserBoard/UserBoard";
 
 const { width, height } = Dimensions.get("window");
 
@@ -13,6 +13,7 @@ const UserBoardContainer = () => {
   const pan = useRef(new Animated.ValueXY({ x: 0, y: height - 20 })).current;
   const panResponder = useRef(
     PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {
         pan.setOffset({ x: pan.x._value, y: pan.y._value });
@@ -25,7 +26,7 @@ const UserBoardContainer = () => {
           Animated.spring(
             pan,
             {
-              toValue: springPoint1
+              toValue: springPoint1,
             },
             { useNativeDriver: true }
           ).start();
@@ -33,12 +34,12 @@ const UserBoardContainer = () => {
           Animated.spring(
             pan,
             {
-              toValue: springPoint2
+              toValue: springPoint2,
             },
             { useNativeDriver: true }
           ).start();
         }
-      }
+      },
     })
   ).current;
   return (

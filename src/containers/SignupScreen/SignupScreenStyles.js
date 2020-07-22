@@ -4,27 +4,26 @@ import { StyleSheet } from "react-native";
 export const SignupScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-end"
+    justifyContent: "center",
   },
   formContainer: {
     justifyContent: "center",
     marginHorizontal: 10,
-    padding: 13
   },
   signupButton: {
     marginHorizontal: 40,
     backgroundColor: "#FF7110",
-    borderRadius: 10
-  },
-  stretch: {
-    width: 300,
-    height: 300,
-    resizeMode: "stretch",
-    borderRadius: 100,
-    left: 50
-  },
-  link: {
+    borderRadius: 10,
+    elevation: 15,
+    marginBottom: 40,
+    width: 250,
     alignSelf: "center",
-    marginTop: 10
-  }
+  },
+  errorMessage: {
+    position: "relative",
+    top: -30,
+    color: "white",
+    alignSelf: "center",
+    fontFamily: "MontSerrat",
+  },
 });

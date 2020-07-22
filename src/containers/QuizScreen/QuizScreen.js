@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Button,
   AsyncStorage,
-  ActivityIndicator
+  ActivityIndicator,
 } from "react-native";
 
 import { navigate } from "../../navigationRef";
@@ -18,7 +18,7 @@ import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
 import { connect } from "react-redux";
 import { getQuizData } from "../../store/actions/quiz";
 
-const QuizScreen = props => {
+const QuizScreen = (props) => {
   const retrieveData = async () => {
     const chapterId = await AsyncStorage.getItem("currentChapterIndex");
     const chapterIdInt = parseInt(chapterId);
@@ -46,17 +46,17 @@ const QuizScreen = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    quiz: state.QuizReducer.quiz
+    quiz: state.QuizReducer.quiz,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getQuizData: (token, chapterId) => {
       dispatch(getQuizData(token, chapterId));
-    }
+    },
   };
 };
 

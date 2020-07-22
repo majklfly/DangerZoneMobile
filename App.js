@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { AppLoading } from "expo";
 
-import DropdownAlert from "react-native-dropdownalert";
-import { AlertHelper } from "./src/containers/AlertHelper";
+import Background from "./src/components/Background/Background";
 
-import {
-  createBottomTabNavigator,
-  createMaterialTopTabNavigator
-} from "react-navigation-tabs";
-import { createStackNavigator } from "react-navigation-stack";
+import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 
 import { setNavigator } from "./src/navigationRef";
 import * as Font from "expo-font";
@@ -24,6 +19,7 @@ import ChaptersScreen from "./src/containers/ChaptersScreen/ChaptersScreen";
 import ArticleScreen from "./src/containers/ArticleScreen/ArticleScreen";
 import TermsScreen from "./src/containers/TermsScreen/TermsScreen";
 import QuizScreen from "./src/containers/QuizScreen/QuizScreen";
+import AboutScreen from "./src/containers/AboutScreen/AboutScreen";
 import QuizResultSlide from "./src/components/QuizResultSlide/QuizResultSlide";
 
 const switchNavigator = createSwitchNavigator({
@@ -31,7 +27,7 @@ const switchNavigator = createSwitchNavigator({
     {
       Terms: TermsScreen,
       Signin: SigninScreen,
-      Signup: SignupScreen
+      Signup: SignupScreen,
     },
     {
       initialRouteName: "Signin",
@@ -39,15 +35,16 @@ const switchNavigator = createSwitchNavigator({
       tabBarOptions: {
         showLabel: false,
         showIcon: false,
-        style: { height: 0 }
-      }
+        style: { height: 0 },
+      },
     }
   ),
   Chapters: ChaptersScreen,
   Profile: ProfileScreen,
   Article: ArticleScreen,
+  About: AboutScreen,
   Quiz: QuizScreen,
-  QuizResultSlide: QuizResultSlide
+  QuizResultSlide: QuizResultSlide,
 });
 
 export const AppContainer = createAppContainer(switchNavigator);
@@ -55,7 +52,8 @@ export const AppContainer = createAppContainer(switchNavigator);
 const getFonts = () =>
   Font.loadAsync({
     PermanentMarker: require("./assets/fonts/PermanentMarker-Regular.ttf"),
-    PTSans: require("./assets/fonts/PTSans-Regular.ttf")
+    PTSans: require("./assets/fonts/PTSans-Regular.ttf"),
+    MontSerrat: require("./assets/fonts/Montserrat/Montserrat-Medium.ttf"),
   });
 
 export default App = () => {
@@ -65,20 +63,13 @@ export default App = () => {
     return (
       <>
         <Provider store={store}>
+          <Background />
           <AppContainer
-            ref={navigator => {
+            ref={(navigator) => {
               setNavigator(navigator);
             }}
           />
         </Provider>
-        <DropdownAlert
-          defaultContainer={{
-            padding: 8,
-            flexDirection: "row"
-          }}
-          ref={ref => AlertHelper.setDropDown(ref)}
-          onClose={() => AlertHelper.invokeOnClose()}
-        />
       </>
     );
   } else {

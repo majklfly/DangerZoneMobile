@@ -7,30 +7,35 @@ export const ArticleSlideStyles = StyleSheet.create({
   cardView: {
     flex: 1,
     width: width - 40,
-    height: height,
-    backgroundColor: "white",
+    height: height - 100,
+    backgroundColor: "#364d79",
     padding: 20,
+    marginTop: 60,
     margin: 20,
     borderWidth: 3,
-    borderColor: "#ff7110"
+    borderColor: "#ff7110",
+    elevation: 10,
   },
   itemTitle: {
-    color: "black",
+    color: "white",
     fontSize: 30,
     elevation: 5,
     alignSelf: "center",
-    paddingTop: 50,
-    fontFamily: "PermanentMarker"
+    paddingTop: 30,
+    fontFamily: "MontSerrat",
+    textAlign: "center",
   },
   itemContent: {
-    color: "black",
-    fontSize: 14,
-    alignSelf: "flex-start",
-    paddingTop: 10,
-    fontFamily: "PTSans"
+    color: "white",
+    paddingVertical: 5,
+    fontFamily: "MontSerrat",
   },
   button: {
     backgroundColor: "#ff7110",
-    fontSize: 30
-  }
+    fontSize: 30,
+  },
+  itemContentContainer: {
+    marginTop: 10,
+    overflow: "hidden",
+  },
 });
