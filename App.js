@@ -21,6 +21,7 @@ import TermsScreen from "./src/containers/TermsScreen/TermsScreen";
 import QuizScreen from "./src/containers/QuizScreen/QuizScreen";
 import AboutScreen from "./src/containers/AboutScreen/AboutScreen";
 import QuizResultSlide from "./src/components/QuizResultSlide/QuizResultSlide";
+import SettingsScreen from "./src/containers/SettingsScreen/SettingsScreen";
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createMaterialTopTabNavigator(
@@ -44,6 +45,7 @@ const switchNavigator = createSwitchNavigator({
   Article: ArticleScreen,
   About: AboutScreen,
   Quiz: QuizScreen,
+  Setting: SettingsScreen,
   QuizResultSlide: QuizResultSlide,
 });
 
