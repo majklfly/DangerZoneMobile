@@ -18,7 +18,7 @@ const UserBoardContainer = () => {
       onPanResponderGrant: () => {
         pan.setOffset({ x: pan.x._value, y: pan.y._value });
       },
-      onPanResponderMove: Animated.event([null, { dy: pan.y }]),
+      onPanResponderMove: Animated.event([null, { dy: pan.y }], {}),
       onPanResponderRelease: () => {
         fullScreen === 0 ? fullScreen.setValue(1) : fullScreen.setValue(0);
         pan.flattenOffset();

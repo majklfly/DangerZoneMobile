@@ -37,6 +37,7 @@
     "react-native-elements": "^2.0.0",
     "react-native-fbsdk": "github:facebook/react-native-fbsdk",
     "react-native-gesture-handler": "~1.6.0",
+    "react-native-modal": "^11.5.6",
     "react-native-popup-navigation": "^0.2.0",
     "react-native-progress": "^3.6.0",
     "react-native-reanimated": "~1.9.0",
