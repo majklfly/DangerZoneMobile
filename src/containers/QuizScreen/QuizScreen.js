@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  AsyncStorage,
-  ActivityIndicator,
-} from "react-native";
+import { View, AsyncStorage, BackHandler } from "react-native";
 
 import { navigate } from "../../navigationRef";
 import LottieView from "lottie-react-native";
@@ -25,6 +18,18 @@ const QuizScreen = (props) => {
     const token = await AsyncStorage.getItem("token");
     props.getQuizData(token, chapterIdInt);
   };
+
+  useEffect(() => {
+    const backButtonHandler = () => {
+      navigate("Chapters");
+      return true;
+    };
+    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+    return () => {
+      BackHandler.removeEventListener();
+    };
+  }, []);
 
   useEffect(() => {
     retrieveData();

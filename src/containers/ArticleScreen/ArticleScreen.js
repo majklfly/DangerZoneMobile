@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
+import { View, BackHandler } from "react-native";
 import { navigate } from "../../navigationRef";
 
 import { ArticlesScreenStyles as styles } from "./ArticlesScreenStyles";
@@ -19,6 +18,18 @@ const ArticleScreen = (props) => {
     );
     props.getChapter(token, currentChapterIndex);
   };
+
+  useEffect(() => {
+    const backButtonHandler = () => {
+      navigate("Chapters");
+      return true;
+    };
+    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+    return () => {
+      BackHandler.removeEventListener();
+    };
+  }, []);
 
   useEffect(() => {
     retrieveData();

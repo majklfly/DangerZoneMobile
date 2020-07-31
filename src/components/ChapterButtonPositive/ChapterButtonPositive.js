@@ -10,7 +10,6 @@ const ChapterButtonPositive = (props) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const handleButton = async (title) => {
-    console.log("runned");
     const indexStringified = JSON.stringify(props.chapterIndex);
     await AsyncStorage.setItem("currentChapterIndex", indexStringified);
     navigate("Article");
@@ -20,9 +19,11 @@ const ChapterButtonPositive = (props) => {
     <TouchableOpacity
       style={styles.buttonLayout}
       onPress={() => handleButton(props.title)}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
       data-test="chapterButtonPositive"
     >
-      <View style={styles.indicator}>
+      <View style={isPressed ? styles.buttonPressed : styles.indicator}>
         {props.title === "Handwashing" && (
           <Image
             source={require("../../assets/images/handwashing.gif")}
@@ -73,7 +74,10 @@ const ChapterButtonPositive = (props) => {
         )}
       </View>
       <View style={isPressed ? styles.buttonPressed : styles.buttonStyle}>
-        <Text style={styles.title}> {props.title}</Text>
+        <Text style={isPressed ? styles.titlePressed : styles.title}>
+          {" "}
+          {props.title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

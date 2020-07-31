@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Dimensions } from "react-native";
 import { translate } from "react-native-redash";
+import { nonsense } from "antd-mobile/lib/picker";
 
 const { width, height } = Dimensions.get("window");
 
@@ -27,6 +28,8 @@ export const ChapterButtonStyles = StyleSheet.create({
     width: width - 150,
     borderWidth: 3,
     borderLeftWidth: 0,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
     borderColor: "#FF7110",
     backgroundColor: "#fdbb77",
     elevation: 11,
@@ -34,7 +37,21 @@ export const ChapterButtonStyles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonPressed: {
-    backgroundColor: "blue",
+    height: 130,
+    width: width - 150,
+    borderWidth: 3,
+    borderLeftWidth: 0,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    borderColor: "#FF7110",
+    backgroundColor: "#fdbb77",
+    elevation: 11,
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: 0.2,
+  },
+  titlePressed: {
+    display: "none",
   },
   title: {
     fontSize: 27,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import { View, Linking } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import LottieView from "lottie-react-native";
 
@@ -17,6 +17,7 @@ import {
   faAngleDoubleRight,
   faAngleDoubleLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SigninScreen = (props) => {
   const [username, setUsername] = useState("");
@@ -127,6 +128,16 @@ const SigninScreen = (props) => {
               titleStyle={{ fontFamily: "MontSerrat" }}
             />
             <FacebookButton />
+            <Text
+              style={styles.forgotPasswordText}
+              onPress={() =>
+                Linking.openURL(
+                  "https://dangerzone-react.herokuapp.com/sendnespassword/"
+                )
+              }
+            >
+              Forgot your password?
+            </Text>
           </View>
         </>
       )}

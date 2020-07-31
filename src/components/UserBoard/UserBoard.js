@@ -57,7 +57,7 @@ const UserBoard = (props) => {
       />
       {props.userData.userdata ? (
         <Text style={styles.title} data-test="userBoardText">
-          What's up, {props.userData.userdata.username}
+          What's up, {props.userData.userdata.username.split("@")[0]}
         </Text>
       ) : null}
       <AnimatedCircularProgress

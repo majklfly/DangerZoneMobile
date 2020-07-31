@@ -1,12 +1,24 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, BackHandler } from "react-native";
 import Profile from "../../components/Profile/Profile";
 import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
+import { navigate } from "../../navigationRef";
 
-import { getUserData } from "../../store/actions/userData";
 import { connect } from "react-redux";
 
-const ProfileScreen = props => {
+const ProfileScreen = (props) => {
+  useEffect(() => {
+    const backButtonHandler = () => {
+      navigate("Chapters");
+      return true;
+    };
+    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+    return () => {
+      BackHandler.removeEventListener();
+    };
+  }, []);
+
   return (
     <View>
       <Profile userdata={props.userdata} />
@@ -15,9 +27,9 @@ const ProfileScreen = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    userdata: state.userDataReducer.userdata
+    userdata: state.userDataReducer.userdata,
   };
 };
 

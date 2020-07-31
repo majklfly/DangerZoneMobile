@@ -10,7 +10,7 @@ const springPoint2 = { x: 1, y: height - 20 };
 
 const UserBoardContainer = () => {
   const fullScreen = useRef(new Animated.Value(0)).current;
-  const pan = useRef(new Animated.ValueXY({ x: 0, y: height - 20 })).current;
+  const pan = useRef(new Animated.ValueXY({ x: 0, y: height - 30 })).current;
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,

@@ -5,17 +5,19 @@ import { FontAwesome } from "@expo/vector-icons";
 import { ProfileStyles as styles } from "./ProfileStyles";
 import ProfileForm from "../ProfileForm/ProfileForm";
 
-const Profile = props => {
+const Profile = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handlePress = async username => {
+  const handlePress = async (username) => {
     await Linking.openURL(`https://www.facebook.com/${username}`);
   };
 
   return (
     <View style={styles.container} data-test="mainContainer">
       <View style={styles.titleContainer} data-test="titleContainer">
-        <Text style={styles.title}>{props.userdata.username}</Text>
+        <Text style={styles.title}>
+          {props.userdata.username.split("@")[0]}
+        </Text>
         <FontAwesome
           name="edit"
           style={styles.icon}

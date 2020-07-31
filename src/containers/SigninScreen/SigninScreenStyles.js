@@ -54,4 +54,8 @@ export const SigninScreenStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  forgotPasswordText: {
+    fontFamily: "MontSerrat",
+    alignSelf: "center",
+  },
 });

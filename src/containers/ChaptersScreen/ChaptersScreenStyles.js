@@ -13,4 +13,12 @@ export const ChaptersScreenStyles = StyleSheet.create({
   indicator: {
     margin: 100,
   },
+  loadingText: {
+    width: "80%",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

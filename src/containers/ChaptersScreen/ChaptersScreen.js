@@ -1,16 +1,9 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ActivityIndicator,
-  AsyncStorage,
-} from "react-native";
+import { View, Text, AsyncStorage } from "react-native";
 
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
 import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
 import LottieView from "lottie-react-native";
-import Background from "../../components/Background/Background";
 
 import UserBoardContainer from "../UserBoardContainer/UserBoardContainer";
 
@@ -24,7 +17,7 @@ const ChaptersScreen = (props) => {
     props.getUserData(props.token, props.userId);
   }, []);
 
-  if (typeof props.chapters.chapters === "object") {
+  if (typeof props.chapters.chapters !== "object") {
     AsyncStorage.setItem(
       "chaptersLength",
       JSON.stringify(props.chapters.chapters.length)
@@ -41,11 +34,16 @@ const ChaptersScreen = (props) => {
     );
   }
   return (
-    <LottieView
-      source={require("../../../assets/animations/7314-loading.json")}
-      autoPlay
-      loop
-    />
+    <View style={styles.loadingContainer}>
+      <LottieView
+        source={require("../../../assets/animations/7314-loading.json")}
+        autoPlay
+        loop
+      />
+      <Text style={styles.loadingText}>
+        Please wait, this might take couple seconds
+      </Text>
+    </View>
   );
 };
 
