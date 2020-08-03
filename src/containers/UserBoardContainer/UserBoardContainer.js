@@ -22,7 +22,7 @@ const UserBoardContainer = () => {
       onPanResponderRelease: () => {
         fullScreen === 0 ? fullScreen.setValue(1) : fullScreen.setValue(0);
         pan.flattenOffset();
-        if (pan.y._value <= 500) {
+        if (pan.y._value >= 500) {
           Animated.spring(
             pan,
             {
@@ -30,7 +30,7 @@ const UserBoardContainer = () => {
             },
             { useNativeDriver: true }
           ).start();
-        } else if (pan.y._value >= 500) {
+        } else if (pan.y._value <= 500) {
           Animated.spring(
             pan,
             {

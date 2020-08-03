@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   TextInput,
   KeyboardAvoidingView,
   ScrollView,
+  BackHandler,
 } from "react-native";
-import { AsyncStorage } from "react-native";
 import { navigate } from "../../navigationRef";
 
 import { FontAwesome } from "@expo/vector-icons";
@@ -39,7 +39,7 @@ const ProfileForm = (props) => {
       ...(reddit && { reddit }),
     });
     props.updateUserData(props.token, props.userdata.id, data());
-    navigate("Chapters");
+    props.setModalVisible(!props.modalVisible);
   };
 
   return (

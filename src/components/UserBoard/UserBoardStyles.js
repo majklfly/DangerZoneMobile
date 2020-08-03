@@ -7,7 +7,6 @@ export const UserBoardStyles = StyleSheet.create({
   mainContainer: {
     height: height + 50,
     backgroundColor: "#ff7110",
-    justifyContent: "space-between",
     paddingBottom: 50,
     paddingTop: 40,
   },
@@ -24,17 +23,23 @@ export const UserBoardStyles = StyleSheet.create({
   title: {
     fontSize: 40,
     paddingTop: 20,
+    paddingHorizontal: 10,
     alignSelf: "center",
+    textAlign: "center",
   },
   buttonsContainer: {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
+    top: "60%",
+    width: width,
+    height: "40%",
+    position: "absolute",
   },
   progressBar: {
     alignSelf: "center",
-    marginBottom: 200,
+    marginTop: 50,
   },
   points: {
     fontSize: 40,

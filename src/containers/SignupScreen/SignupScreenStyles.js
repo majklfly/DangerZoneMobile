@@ -8,7 +8,10 @@ export const SignupScreenStyles = StyleSheet.create({
   },
   formContainer: {
     justifyContent: "center",
-    marginHorizontal: 10,
+    width: "90%",
+    position: "absolute",
+    alignSelf: "center",
+    top: "10%",
   },
   signupButton: {
     marginHorizontal: 40,

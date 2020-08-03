@@ -15,6 +15,11 @@ export const ChaptersScreenStyles = StyleSheet.create({
   },
   loadingText: {
     width: "80%",
+    color: "white",
+    fontFamily: "MontSerrat",
+    marginTop: "80%",
+    fontSize: 20,
+    textAlign: "center",
   },
   loadingContainer: {
     flex: 1,

@@ -5,7 +5,6 @@ import LottieView from "lottie-react-native";
 
 import { SigninScreenStyles as styles } from "./SigninScreenStyles";
 import FacebookButton from "../../components/FacebookButton/FacebookButton";
-import Background from "../../components/Background/Background";
 
 import { AsyncStorage } from "react-native";
 
@@ -51,11 +50,16 @@ const SigninScreen = (props) => {
   return (
     <View style={styles.container}>
       {props.loading ? (
-        <LottieView
-          source={require("../../../assets/animations/7314-loading.json")}
-          autoPlay
-          loop
-        />
+        <View style={styles.loadingContainer}>
+          <LottieView
+            source={require("../../../assets/animations/7314-loading.json")}
+            autoPlay
+            loop
+          />
+          <Text style={styles.loadingText}>
+            Please wait, this might take couple seconds.
+          </Text>
+        </View>
       ) : (
         <>
           <View style={styles.iconContainer1}>

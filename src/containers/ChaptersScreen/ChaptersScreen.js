@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, AsyncStorage } from "react-native";
+import { View, Text, AsyncStorage, BackHandler } from "react-native";
 
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
 import { ChaptersScreenStyles as styles } from "./ChaptersScreenStyles";
@@ -17,7 +17,18 @@ const ChaptersScreen = (props) => {
     props.getUserData(props.token, props.userId);
   }, []);
 
-  if (typeof props.chapters.chapters !== "object") {
+  useEffect(() => {
+    const backButtonHandler = () => {
+      return false;
+    };
+    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+    return () => {
+      BackHandler.removeEventListener();
+    };
+  }, []);
+
+  if (props.chapters.chapters) {
     AsyncStorage.setItem(
       "chaptersLength",
       JSON.stringify(props.chapters.chapters.length)
@@ -41,7 +52,7 @@ const ChaptersScreen = (props) => {
         loop
       />
       <Text style={styles.loadingText}>
-        Please wait, this might take couple seconds
+        Please wait, this might take couple seconds.
       </Text>
     </View>
   );

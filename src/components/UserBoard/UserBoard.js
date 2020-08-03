@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  AsyncStorage,
-  Linking,
-} from "react-native";
+import { View, Text, AsyncStorage, Linking } from "react-native";
+
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { AntDesign, Feather as Icon } from "@expo/vector-icons";
@@ -74,7 +70,7 @@ const UserBoard = (props) => {
       <View style={styles.buttonsContainer} data-test="buttonContainer">
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigate("Chapters")}
+          onPress={() => console.log("helloPeter")}
         >
           <AntDesign name="home" size={24} color="white" />
         </TouchableOpacity>

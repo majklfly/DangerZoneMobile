@@ -2,12 +2,8 @@
   "expo": {
     "name": "DangerZone",
     "slug": "DangerZone",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "1.0.0",
+    "platforms": ["android", "web"],
+    "version": "1.0.1",
     "orientation": "portrait",
     "sdkVersion": "38.0.0",
     "icon": "./assets/icon.png",
@@ -19,15 +15,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "package": "com.dangerzone.dangerzone",
-      "versionCode": 1
+      "versionCode": 2
     },
     "description": "DangerZone mobile app project"
   }
