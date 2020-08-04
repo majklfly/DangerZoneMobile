@@ -2,38 +2,38 @@ import { types } from "./actionTypes";
 import server from "../../api/server";
 import { navigate } from "../../navigationRef";
 
-export const getChapter_function = data => {
+export const getChapter_function = (data) => {
   return {
     type: types.GET_CHAPTER,
-    payload: data
+    payload: data,
   };
 };
 
-export const getChapters = token => async dispatch => {
-  await server
+export const getChapters = (token) => async (dispatch) => {
+  server
     .get("/chapters/", {
-      headers: { authorization: `Token ${token}` }
+      headers: { authorization: `Token ${token}` },
     })
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: types.GET_CHAPTERS,
-        payload: res.data
+        payload: res.data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
 
-export const getChapter = (token, index) => async dispatch => {
-  await server
+export const getChapter = (token, index) => async (dispatch) => {
+  server
     .get(`/chapters/${index}/`, {
-      headers: { authorization: `Token ${token}` }
+      headers: { authorization: `Token ${token}` },
     })
-    .then(response => {
+    .then((response) => {
       dispatch(getChapter_function(response.data));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };

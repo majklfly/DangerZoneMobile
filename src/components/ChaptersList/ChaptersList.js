@@ -5,18 +5,18 @@ import { ChaptersListStyles as styles } from "./ChaptersListStyles";
 import ChapterButtonPositive from "../ChapterButtonPositive/ChapterButtonPositive";
 import ChapterButtonNegative from "../ChapterButtonNegative/ChapterButtonNegative";
 
-const ChaptersList = props => {
+const ChaptersList = (props) => {
   const chapters = [];
   const completedChapters = [];
 
   const sortChapters = () => {
-    if (props.chapters.chapters !== undefined) {
-      props.chapters.chapters.map(item => {
+    if (props.chapters.chapters) {
+      props.chapters.chapters.map((item) => {
         return chapters.push([item.id, item.title]);
       });
-      if (props.completedChapters.userdata !== undefined) {
+      if (props.completedChapters.userdata) {
         const data = props.completedChapters.userdata.chapterdata;
-        data.map(item => {
+        data.map((item) => {
           return item.completed === true
             ? completedChapters.push(item.chapterTitle)
             : null;

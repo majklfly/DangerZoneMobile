@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { UserBoardContainerStyles as styles } from "./UserBoardContainerStyles";
-import { Animated, PanResponder, View, Dimensions, Text } from "react-native";
+import { Animated, PanResponder, View, Dimensions } from "react-native";
 import UserBoard from "../../components/UserBoard/UserBoard";
 
 const { width, height } = Dimensions.get("window");
@@ -13,8 +13,11 @@ const UserBoardContainer = () => {
   const pan = useRef(new Animated.ValueXY({ x: 0, y: height - 30 })).current;
   const panResponder = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponder: () => false,
+      onMoveShouldSetPanResponder: (_, gestureState) => {
+        const { dx, dy } = gestureState;
+        return dx > 2 || dx < -2 || dy > 2 || dy < -2;
+      },
       onPanResponderGrant: () => {
         pan.setOffset({ x: pan.x._value, y: pan.y._value });
       },
@@ -42,11 +45,19 @@ const UserBoardContainer = () => {
       },
     })
   ).current;
+
   return (
     <View style={styles.container}>
       <Animated.View
         data-test="animationContainer"
-        style={{ transform: [{ translateY: pan.y }] }}
+        style={{
+          transform: [{ translateY: pan.y }],
+          backgroundColor: "blue",
+          height: "100%",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
         {...panResponder.panHandlers}
       >
         <UserBoard />

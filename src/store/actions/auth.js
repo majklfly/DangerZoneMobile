@@ -100,8 +100,11 @@ export const FacebookLogin = (token) => {
         const token = res.data.token;
         const userId = res.data.id;
         dispatch(authSuccess(token, userId));
-        AsyncStorage.setItem("token", res.data.token);
-        AsyncStorage.setItem("userId", res.data.id);
+        const setItems = async () => {
+          await AsyncStorage.setItem("token", res.data.token);
+          await AsyncStorage.setItem("userId", res.data.id.toString());
+        };
+        setItems();
         navigate("Chapters");
       })
       .catch((error) => {

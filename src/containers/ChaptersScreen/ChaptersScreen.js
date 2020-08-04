@@ -12,9 +12,13 @@ import { getUserData } from "../../store/actions/userData";
 import { connect } from "react-redux";
 
 const ChaptersScreen = (props) => {
+  const loadData = async () => {
+    await props.getChapters(props.token);
+    await props.getUserData(props.token, props.userId);
+  };
+
   useEffect(() => {
-    props.getChapters(props.token);
-    props.getUserData(props.token, props.userId);
+    loadData();
   }, []);
 
   useEffect(() => {

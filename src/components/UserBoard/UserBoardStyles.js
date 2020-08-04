@@ -9,6 +9,8 @@ export const UserBoardStyles = StyleSheet.create({
     backgroundColor: "#ff7110",
     paddingBottom: 50,
     paddingTop: 40,
+    zIndex: 100,
+    elevation: 100,
   },
   button: {
     width: 80,

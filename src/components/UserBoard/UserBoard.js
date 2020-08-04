@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, AsyncStorage, Linking } from "react-native";
-
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  View,
+  Text,
+  AsyncStorage,
+  Linking,
+  TouchableOpacity,
+} from "react-native";
 
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { AntDesign, Feather as Icon } from "@expo/vector-icons";
@@ -56,6 +60,17 @@ const UserBoard = (props) => {
           What's up, {props.userData.userdata.username.split("@")[0]}
         </Text>
       ) : null}
+      <Text
+        style={{
+          textAlign: "center",
+          position: "absolute",
+          left: "50%",
+          top: "25%",
+        }}
+        onPress={() => console.log("hello")}
+      >
+        Hello
+      </Text>
       <AnimatedCircularProgress
         size={180}
         width={15}
@@ -67,10 +82,15 @@ const UserBoard = (props) => {
       >
         {(fill) => <Text style={styles.points}>{percentage}%</Text>}
       </AnimatedCircularProgress>
-      <View style={styles.buttonsContainer} data-test="buttonContainer">
+
+      <View
+        style={styles.buttonsContainer}
+        data-test="buttonContainer"
+        onPress={() => console.log("hello")}
+      >
         <TouchableOpacity
           style={styles.button}
-          onPress={() => console.log("helloPeter")}
+          onPress={() => navigate("Chapters")}
         >
           <AntDesign name="home" size={24} color="white" />
         </TouchableOpacity>
