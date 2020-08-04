@@ -15,8 +15,10 @@ const ArticleSlider = (props) => {
         <FlatList
           data={props.data.articles}
           keyExtractor={(item, index) => "key" + index}
-          renderItem={(item) => {
-            return <ArticleSlide item={item} endOfList={endOfList} />;
+          renderItem={({ item, index }) => {
+            return (
+              <ArticleSlide item={item} endOfList={endOfList} index={index} />
+            );
           }}
           horizontal
           pagingEnable

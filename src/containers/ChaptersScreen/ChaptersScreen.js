@@ -21,17 +21,6 @@ const ChaptersScreen = (props) => {
     loadData();
   }, []);
 
-  useEffect(() => {
-    const backButtonHandler = () => {
-      return false;
-    };
-    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
-
-    return () => {
-      BackHandler.removeEventListener();
-    };
-  }, []);
-
   if (props.chapters.chapters) {
     AsyncStorage.setItem(
       "chaptersLength",

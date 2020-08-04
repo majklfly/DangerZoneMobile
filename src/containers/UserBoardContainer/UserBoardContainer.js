@@ -52,11 +52,6 @@ const UserBoardContainer = () => {
         data-test="animationContainer"
         style={{
           transform: [{ translateY: pan.y }],
-          backgroundColor: "blue",
-          height: "100%",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
         }}
         {...panResponder.panHandlers}
       >

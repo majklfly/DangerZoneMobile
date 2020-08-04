@@ -60,17 +60,6 @@ const UserBoard = (props) => {
           What's up, {props.userData.userdata.username.split("@")[0]}
         </Text>
       ) : null}
-      <Text
-        style={{
-          textAlign: "center",
-          position: "absolute",
-          left: "50%",
-          top: "25%",
-        }}
-        onPress={() => console.log("hello")}
-      >
-        Hello
-      </Text>
       <AnimatedCircularProgress
         size={180}
         width={15}

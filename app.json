@@ -3,7 +3,7 @@
     "name": "DangerZone",
     "slug": "DangerZone",
     "platforms": ["android", "web"],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "sdkVersion": "38.0.0",
     "icon": "./assets/icon.png",
@@ -21,7 +21,7 @@
     },
     "android": {
       "package": "com.dangerzone.dangerzone",
-      "versionCode": 2
+      "versionCode": 3
     },
     "description": "DangerZone mobile app project"
   }
