@@ -27,7 +27,9 @@ There is a second access from the server side of the application. This access is
 
 This is a full stack application, which uses Django-rest-framework with postgres as a backend, ReactJS and React Native as frontend and Jest with Enzyme for unit testing. There is a full list of frameworks and libraries used on https://www.michalmucha.info
 
+{:refdef: style="width: 10px; height: 10px"}
 ![Alt text](./assets/DZMobileSlide1.jpg?v=4&s=200 "Title")
+{: refdef}
 ![Alt text](./assets/DZMobileSlide2.jpg?raw=true "Title")
 ![Alt text](./assets/DZMobileSlide3.jpg?raw=true "Title")
 ![Alt text](./assets/DZMobileSlide4.jpg?raw=true "Title")
