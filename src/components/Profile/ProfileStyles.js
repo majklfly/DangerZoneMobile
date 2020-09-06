@@ -69,7 +69,7 @@ export const ProfileStyles = StyleSheet.create({
     paddingTop: 2,
   },
   textline: {
-    fontSize: 33,
+    fontSize: 26,
   },
   label: {
     fontSize: 15,

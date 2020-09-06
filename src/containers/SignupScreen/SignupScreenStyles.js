@@ -12,6 +12,7 @@ export const SignupScreenStyles = StyleSheet.create({
     position: "absolute",
     alignSelf: "center",
     top: "10%",
+    overflow: "scroll",
   },
   signupButton: {
     marginHorizontal: 40,

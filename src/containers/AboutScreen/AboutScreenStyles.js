@@ -47,8 +47,8 @@ export const AboutScreenStyles = StyleSheet.create({
     height: 80,
   },
   picture2: {
-    width: 220,
-    height: 80,
+    width: width / 2,
+    height: height / 12,
     marginLeft: 10,
   },
   imagesContainer: {

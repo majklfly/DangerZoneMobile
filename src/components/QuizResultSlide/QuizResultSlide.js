@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { QuizResultSlideStyles as styles } from "./QuizResultSlideStyles";
 import { connect } from "react-redux";
 import LottieView from "lottie-react-native";
 import UserBoardContainer from "../../containers/UserBoardContainer/UserBoardContainer";
+import { navigate } from "../../navigationRef";
 
 const QuizResultSlide = (props) => {
   const correctAnswers = props.correctAnswers.correctAnswers;
@@ -13,16 +14,19 @@ const QuizResultSlide = (props) => {
         <Text style={styles.title}>
           You have answered {correctAnswers} questions correctly
         </Text>
-        <LottieView
-          source={require("../../../assets/animations/success.json")}
-          autoPlay
-          loop={false}
-          speed={0.8}
-          style={styles.animationPositive}
-          data-test="positiveAnimation"
-        />
+        <TouchableOpacity onPress={() => navigate("Chapters")}>
+          <LottieView
+            source={require("../../../assets/animations/success.json")}
+            autoPlay
+            loop={false}
+            speed={0.8}
+            style={styles.animationPositive}
+            data-test="positiveAnimation"
+          />
+        </TouchableOpacity>
+
         <Text style={styles.footer} accessibilityRole="button">
-          What would you like to do know?
+          Wanna check another chapter?
         </Text>
         <UserBoardContainer data-test="userBoard" />
       </View>
@@ -33,14 +37,16 @@ const QuizResultSlide = (props) => {
       <Text style={styles.title}>
         You have answered only {correctAnswers} questions correctly
       </Text>
-      <LottieView
-        source={require("../../../assets/animations/failure.json")}
-        autoPlay
-        loop={false}
-        speed={0.6}
-        style={styles.animationNegative}
-        data-test="negativeAnimation"
-      />
+      <TouchableOpacity onPress={() => navigate("Article")}>
+        <LottieView
+          source={require("../../../assets/animations/failure.json")}
+          autoPlay
+          loop={false}
+          speed={0.6}
+          style={styles.animationNegative}
+          data-test="negativeAnimation"
+        />
+      </TouchableOpacity>
       <Text style={styles.footer} accessibilityRole="button">
         Maybe you would like to revisit the chapter?
       </Text>

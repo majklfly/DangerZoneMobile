@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Button, Modal, Linking } from "react-native";
+import { View, Text, ScrollView, Modal, Linking } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { ProfileStyles as styles } from "./ProfileStyles";
@@ -24,7 +24,7 @@ const Profile = (props) => {
           onPress={() => setModalVisible(!modalVisible)}
         />
       </View>
-      <View style={styles.textContainer} data-test="textContainer">
+      <ScrollView style={styles.textContainer} data-test="textContainer">
         {props.userdata.firstName && (
           <View style={styles.textlineContainer}>
             <Text style={styles.label}>first Name</Text>
@@ -96,7 +96,7 @@ const Profile = (props) => {
             />
           )}
         </View>
-      </View>
+      </ScrollView>
       <Modal
         visible={modalVisible}
         animationType="slide"

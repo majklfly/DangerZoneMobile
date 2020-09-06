@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, AsyncStorage, BackHandler } from "react-native";
 
 import ChaptersList from "../../components/ChaptersList/ChaptersList";
@@ -12,6 +12,7 @@ import { getUserData } from "../../store/actions/userData";
 import { connect } from "react-redux";
 
 const ChaptersScreen = (props) => {
+  const [loading, setLoading] = useState(false);
   const loadData = async () => {
     await props.getChapters(props.token);
     await props.getUserData(props.token, props.userId);
@@ -27,14 +28,26 @@ const ChaptersScreen = (props) => {
       JSON.stringify(props.chapters.chapters.length)
     );
     return (
-      <View style={styles.container} data-test="chapterContainer">
-        <ChaptersList
-          chapters={props.chapters}
-          completedChapters={props.userData}
-          data-test="chapterList"
-        />
-        <UserBoardContainer data-test="swipeContainer" />
-      </View>
+      <>
+        {loading ? (
+          <View style={styles.loadingContainer}>
+            <LottieView
+              source={require("../../../assets/animations/7314-loading.json")}
+              autoPlay
+              loop
+            />
+          </View>
+        ) : (
+          <View style={styles.container} data-test="chapterContainer">
+            <ChaptersList
+              chapters={props.chapters}
+              completedChapters={props.userData}
+              data-test="chapterList"
+            />
+            <UserBoardContainer data-test="swipeContainer" />
+          </View>
+        )}
+      </>
     );
   }
   return (

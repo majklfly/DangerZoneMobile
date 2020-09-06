@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { Text, Input, Button, Image } from "react-native-elements";
 import { SignupScreenStyles as styles } from "./SignupScreenStyles";
 
@@ -141,7 +141,7 @@ const SignupScreen = (props) => {
         <Text style={styles.errorMessage}>
           {props.error && props.error.password2
             ? props.error.password2[0]
-            : password1 !== password2 && "please confirm the password"}
+            : password1 !== password2 && "passwords don't match"}
         </Text>
         <Button
           buttonStyle={styles.signupButton}

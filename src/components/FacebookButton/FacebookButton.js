@@ -12,13 +12,7 @@ const FacebookButton = (props) => {
   async function logIn() {
     try {
       await Facebook.initializeAsync("723054295168510");
-      const {
-        type,
-        token,
-        expires,
-        permissions,
-        declinedPermissions,
-      } = await Facebook.logInWithReadPermissionsAsync({
+      const { type, token } = await Facebook.logInWithReadPermissionsAsync({
         permissions: ["public_profile"],
       });
       if (type === "success") {
